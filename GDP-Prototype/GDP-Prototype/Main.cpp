@@ -5,14 +5,15 @@
 #include "arduino.h"
 
 // Pin assignments
-#define PIN_DOOR_RELAY		2
-#define PIN_CAR_PARKED		3
-#define PIN_GARAGE_DOOR		4
-#define PIN_PWR_MB1040		5
-#define PIN_BUTTON_UP		8
-#define PIN_BUTTON_DOWN		9
-#define PIN_BUTTON_LEFT		10
-#define PIN_BUTTON_RIGHT	11
+#define PIN_DOOR_RELAY			2
+#define PIN_CAR_PARKED			3
+#define PIN_GARAGE_DOOR_OPEN	4
+#define PIN_GARAGE_DOOR_CLOSED	5
+#define PIN_PWR_MB1040			6
+#define PIN_BUTTON_UP			8
+#define PIN_BUTTON_DOWN			9
+#define PIN_BUTTON_LEFT			10
+#define PIN_BUTTON_RIGHT		11
 
 // Timer definitions
 #define SENSOR_RESET_TIME		900000 // Manufacture recommends a reset every 15 minutes
@@ -31,7 +32,12 @@ bool bParkingSensorOn = false;
 bool bParkingLightsOn = false;
 bool bParkingInProgress = false;
 bool bDoorInMotion = false;
-bool bIsCarParked = false;
+bool bDoorOpen = false;
+bool bDoorClosed = false;
+bool bCarInGarage = false;
+bool bCarParked = false;
+bool bOkToStartParkingProcess = false;
+bool bCarLeavingGarage = false;
 
 // Prototype distance measurements
 #define GARAGE_DISTANCE	40 // For the purpose of the prototype the distance from the sensor to garage door is 40 inches
@@ -57,7 +63,8 @@ void setup()
 	pinMode(PIN_PWR_MB1040, OUTPUT);
 	pinMode(PIN_DOOR_RELAY, OUTPUT);
 	pinMode(PIN_CAR_PARKED, OUTPUT);
-	pinMode(PIN_GARAGE_DOOR, INPUT);
+	pinMode(PIN_GARAGE_DOOR_OPEN, INPUT);
+	pinMode(PIN_GARAGE_DOOR_CLOSED, INPUT);
 
 	digitalWrite(PIN_PWR_MB1040, LOW); // Turn power on to the MB 1040
 	digitalWrite(PIN_DOOR_RELAY, LOW); // Open the relay (using LOW as the transistor ensures correct operation when Galileo is off or starting)
@@ -179,18 +186,8 @@ void ActivateDoorControl()
 	Log("Released Door Button\n");
 }
 
-void DisplayCarParkedLights(bool bLightsOn = FALSE)
+void ParkingLightsTimer()
 {
-	// If bLightsOn == TRUE then turn the lights on and exit
-	if (bLightsOn)
-	{
-		Log("Parking Lights On\n");
-		digitalWrite(PIN_CAR_PARKED, HIGH); // Turn the correctly parked lights on
-		parkLightsOnTime = millis(); // Record the on time
-		bParkingInProgress = true; // Displaying the lights means that parking is in progress
-		return;
-	}
-
 	// if the timer is set to zero then the lights are off
 	if (parkLightsOnTime == 0)
 		return;
@@ -199,68 +196,48 @@ void DisplayCarParkedLights(bool bLightsOn = FALSE)
 	if ((millis() - parkLightsOnTime) > PARKED_LIGHTS_ON_TIME)
 	{
 		TurnCarParkedLightsOff();
-		Log("Parking Lights Off\n");
+	}
+}
+
+void TurnCarParkedLightsOn()
+{
+	if (!bParkingLightsOn)
+	{
+		bParkingInProgress = true; // We're turning off the lights so by definition parking has stopped
+		digitalWrite(PIN_CAR_PARKED, LOW); // Turn the correctly parked lights off
+		parkLightsOnTime = millis(); // Record the on time
+		Log("Parking Lights On\n");
 	}
 }
 
 void TurnCarParkedLightsOff()
 {
-	bParkingInProgress = false; // We're turning off the lights so by definition parking has stopped
-	digitalWrite(PIN_CAR_PARKED, LOW); // Turn the correctly parked lights off
-	parkLightsOnTime = 0; // Reset the timer
-}
-
-// This routine is where we would conduct the car parking process
-// TODO: Fix the fact that parking turns the system off completely
-void CheckCarParked()
-{
-	int distance = 0;
-
-	// Read the distance
-	distance = ReadDistance();
-
-	// If the distance is correct turn the lights off
-	if (distance < 20)
+	if (bParkingLightsOn)
 	{
-		bIsCarParked = true;
-		TurnCarParkedLightsOff();
+		bParkingInProgress = false; // We're turning off the lights so by definition parking has stopped
+		digitalWrite(PIN_CAR_PARKED, LOW); // Turn the correctly parked lights off
+		parkLightsOnTime = 0; // Reset the timer
+		Log("Parking Lights Off\n");
 	}
-	else
-		bIsCarParked = false;
 }
 
-// Checks to see if the garage door sensor is reporting open
-bool IsGarageDoorOpen()
+void PerformParkingProcess()
 {
-	// The sensor is pulled high normally so if the pin is reading low then the door is open
-	if (digitalRead(PIN_GARAGE_DOOR))
-		return false;
-	else
-		return true;
+	// TODO: Implement the parking process
 }
 
-bool IsGarageDoorInMotion()
+// Checks the door state and updates the globals to reflect that state
+void CheckDoorState()
 {
-	unsigned long timeSinceLastCheck = 0;
+	// Get the door sensor states
+	bDoorClosed = digitalRead(PIN_GARAGE_DOOR_CLOSED);
+	bDoorOpen = digitalRead(PIN_GARAGE_DOOR_OPEN);
 
-	// is the door in motion
-	if (bDoorInMotion)
-	{
-		timeSinceLastCheck = millis() - doorTravelTimer;
-
-		// Check to see if a travel cycle could have completed
-		if (timeSinceLastCheck > DOOR_TRAVEL_TIME)
-		{
-			// If it has then reset the timer and report that the door has completed moving
-			doorTravelTimer = 0;
-			bDoorInMotion = false;
-			return false;
-		}
-		else
-			return true; // Otherwise the door is still in motion
-	}
-
-	return false;
+	// if the door is neither open or closed then it is either in motion or stuck. In either case treat the door as in motion.
+	if (!bDoorClosed & !bDoorOpen)
+		bDoorInMotion = true;
+	else
+		bDoorInMotion = false;
 }
 
 // This function turns the MB1040 on and then waits till good distance data is coming in
@@ -301,6 +278,36 @@ void ReadButtonState(ButtonState *buttonState)
 		buttonState->bRight = true;
 }
 
+// Checks to see if there is a car in the parked position
+bool IsCarInParkedPosition()
+{
+	int distance = 0;
+
+	// Read the distance
+	distance = ReadDistance();
+
+	// If the distance is less than or equal to the parking distance
+	// then there is a parked car.
+	if (distance <= PARKED_DISTANCE)
+		return true;
+
+	return false;
+}
+
+bool IsCarInGarage()
+{
+	int distance = 0;
+
+	// Read the distance
+	distance = ReadDistance();
+
+	// If the distance is less than or equal to the garage length
+	// then there is a car int he garage
+	if (distance <= GARAGE_DISTANCE)
+		return true;
+
+	return false;
+}
 // the loop routine runs over and over again forever:
 void loop()
 {
@@ -309,31 +316,46 @@ void loop()
 		ResetSensor();
 
 	if (bParkingLightsOn)
-		DisplayCarParkedLights();
+		ParkingLightsTimer();
 
-	// Run the parking process
-	if (bParkingInProgress)
-		CheckCarParked();
+	// TODO: Need to handle the case where the door isn't open or closed by timing the open/close process and giving an error if exceeded
 
-	// TODO: IF the door opens, check to see if a car is parked already. If so then no parking process until the car leaves the garage by distance.
+	// Get the current door state
+	CheckDoorState();
 
-	// Check if the door is open by first ensuring that it isn't in motion
-	if (!IsGarageDoorInMotion())
+	// When the door is open and there is a car already at the parking distance do not display the parking lights
+	// Once the car moves off the parking spot the lights should display until the car leaves the garage
+	if (bDoorOpen)
 	{
-		// Now read the door status and if open start the parking process
-		if (IsGarageDoorOpen() & (!bIsCarParked))
+		// If we aren't in the parking process then workout if we should be
+		if (!bOkToStartParkingProcess)
 		{
-			// Start the parking process
-			if (!bParkingInProgress)
+			// Check to see if a car is already parked
+			bCarParked = IsCarInParkedPosition();
+
+			// If a car is parked then we need to wait for it to leave the garage before starting the parking process
+			if (bCarParked)
+				bOkToStartParkingProcess = false;
+			else
 			{
-				TurnParkingSensorOn();
-				DisplayCarParkedLights(true);
+				bCarInGarage = IsCarInGarage();
+
+				// If there isn't a car in the garage we can start the parking process
+				if (!bCarInGarage)
+					bOkToStartParkingProcess = true;
 			}
 		}
-		else // If the garage door is close then turn off the lights and sensor
+		else
 		{
-			TurnCarParkedLightsOff();
-			TurnParkingSensorOff();
+			// We can now perform the parking process
+			PerformParkingProcess();
 		}
+	}
+
+	// Once the door is closed we can turn everything off
+	if (bDoorClosed)
+	{
+		bOkToStartParkingProcess = false;
+		TurnCarParkedLightsOff();
 	}
 }

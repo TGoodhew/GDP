@@ -1,11 +1,12 @@
 int ReadDistance();
 void ResetSensor(bool);
 void ActivateDoorControl();
-void DisplayCarParkedLights(bool);
-void CheckCarParked();
+void TurnCarParkedLightsOn();
 void TurnCarParkedLightsOff();
-bool IsGarageDoorOpen();
-bool IsGarageDoorInMotion();
 void TurnParkingSensorOn();
 void TurnParkingSensorOff();
 void WaitForValidSensorData();
+void CheckDoorState();
+bool IsCarParked();
+bool IsCarInGarage();
+void PerformParkingProcess();
