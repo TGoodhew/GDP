@@ -224,6 +224,7 @@ void TurnCarParkedLightsOff()
 void PerformParkingProcess()
 {
 	// TODO: Implement the parking process
+	Log(L"Parking\n");
 }
 
 // Checks the door state and updates the globals to reflect that state
