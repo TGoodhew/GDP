@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\u8glib_Utility">
+      <UniqueIdentifier>{e4ecde39-65c4-45d7-ade4-a25293e56aee}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -27,6 +30,111 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\LiquidCrystal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\Print.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\Stepper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\Stream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\WString.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\eeprom.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\Servo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\HardwareSerial.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\NetworkSerial.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\PulseIn.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\DmapSupport.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\GalileoPins.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\GpioController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\I2cController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\PCA9685Support.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\PCAL9535ASupport.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\CY8C9540ASupport.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\Spi.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\SpiController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\WInterrupt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\arduino.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_ll_api.c">
+      <Filter>Source Files\u8glib_Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_state.c">
+      <Filter>Source Files\u8glib_Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_font.c">
+      <Filter>Source Files\u8glib_Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_clip.c">
+      <Filter>Source Files\u8glib_Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_dev_st7565_lm6059.c">
+      <Filter>Source Files\u8glib_Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_com_null.c">
+      <Filter>Source Files\u8glib_Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_com_api.c">
+      <Filter>Source Files\u8glib_Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_delay.c">
+      <Filter>Source Files\u8glib_Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_pb.c">
+      <Filter>Source Files\u8glib_Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_pb8v1.c">
+      <Filter>Source Files\u8glib_Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_pb16v1.c">
+      <Filter>Source Files\u8glib_Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_page.c">
+      <Filter>Source Files\u8glib_Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_font_data.c">
+      <Filter>Source Files\u8glib_Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\U8glib.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

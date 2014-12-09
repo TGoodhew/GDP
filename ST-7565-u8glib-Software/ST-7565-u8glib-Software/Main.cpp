@@ -4,29 +4,52 @@
 #include "stdafx.h"
 #include "arduino.h"
 
+//  U8GLIB_LM6059(sck, mosi, cs, a0 [, reset]) 
+U8GLIB_LM6059 u8g(13, 11, 10, 12, 9);
+
 int _tmain(int argc, _TCHAR* argv[])
 {
     return RunArduinoSketch();
 }
 
-int led = 13;  // This is the pin the LED is attached to.
-
-void setup()
-{
-    // TODO: Add your code here
-    
-    pinMode(led, OUTPUT);       // Configure the pin for OUTPUT so you can turn on the LED.
+void draw(void) {
+	// graphic commands to redraw the complete screen should be placed here  
+	u8g.setFont(u8g_font_unifont);
+	//u8g.setFont(u8g_font_osb21);
+	u8g.drawStr(0, 22, "Hello World!");
 }
 
-// the loop routine runs over and over again forever:
-void loop()
-{
-    // TODO: Add your code here
+void setup(void) {
 
-    digitalWrite(led, LOW);    // turn the LED off by making the voltage LOW
-    Log(L"LED OFF\n");
-    delay(1000);               // wait for a second
-    digitalWrite(led, HIGH);   // turn the LED on by making the voltage HIGH
-    Log(L"LED ON\n");
-    delay(1000);               // wait for a second
+	// flip screen, if required
+	// u8g.setRot180();
+
+	// set SPI backup if required
+	//u8g.setHardwareBackup(u8g_backup_avr_spi);
+
+	// assign default color value
+	if (u8g.getMode() == U8G_MODE_R3G3B2) {
+		u8g.setColorIndex(255);     // white
+	}
+	else if (u8g.getMode() == U8G_MODE_GRAY2BIT) {
+		u8g.setColorIndex(3);         // max intensity
+	}
+	else if (u8g.getMode() == U8G_MODE_BW) {
+		u8g.setColorIndex(1);         // pixel on
+	}
+	else if (u8g.getMode() == U8G_MODE_HICOLOR) {
+		u8g.setHiColorByRGB(255, 255, 255);
+	}
 }
+
+void loop(void) {
+	// picture loop
+	u8g.firstPage();
+	do {
+		draw();
+	} while (u8g.nextPage());
+
+	// rebuild the picture after some delay
+	delay(50);
+}
+

@@ -126,89 +126,89 @@ static uint8_t u8g_font_GetFontGlyphStructureSize(const u8g_fntpgm_uint8_t *font
 
 static uint8_t u8g_font_GetBBXWidth(const void *font)
 {
-  return u8g_font_get_byte(font, 1);
+	return u8g_font_get_byte((const u8g_fntpgm_uint8_t *)font, 1);
 }
 
 static uint8_t u8g_font_GetBBXHeight(const void *font)
 {
-  return u8g_font_get_byte(font, 2);
+	return u8g_font_get_byte((const u8g_fntpgm_uint8_t *)font, 2);
 }
 
 static int8_t u8g_font_GetBBXOffX(const void *font)
 {
-  return u8g_font_get_byte(font, 3);
+	return u8g_font_get_byte((const u8g_fntpgm_uint8_t *)font, 3);
 }
 
 static int8_t u8g_font_GetBBXOffY(const void *font)
 {
-  return u8g_font_get_byte(font, 4);
+	return u8g_font_get_byte((const u8g_fntpgm_uint8_t *)font, 4);
 }
 
 uint8_t u8g_font_GetCapitalAHeight(const void *font)
 {
-  return u8g_font_get_byte(font, 5);
+	return u8g_font_get_byte((const u8g_fntpgm_uint8_t *)font, 5);
 }
 
 uint16_t u8g_font_GetEncoding65Pos(const void *font) U8G_NOINLINE;
 uint16_t u8g_font_GetEncoding65Pos(const void *font)
 {
-    return u8g_font_get_word(font, 6);
+	return u8g_font_get_word((const u8g_fntpgm_uint8_t *)font, 6);
 }
 
 uint16_t u8g_font_GetEncoding97Pos(const void *font) U8G_NOINLINE;
 uint16_t u8g_font_GetEncoding97Pos(const void *font)
 {
-    return u8g_font_get_word(font, 8);
+	return u8g_font_get_word((const u8g_fntpgm_uint8_t *)font, 8);
 }
 
 uint8_t u8g_font_GetFontStartEncoding(const void *font)
 {
-  return u8g_font_get_byte(font, 10);
+	return u8g_font_get_byte((const u8g_fntpgm_uint8_t *)font, 10);
 }
 
 uint8_t u8g_font_GetFontEndEncoding(const void *font)
 {
-  return u8g_font_get_byte(font, 11);
+	return u8g_font_get_byte((const u8g_fntpgm_uint8_t *)font, 11);
 }
 
 int8_t u8g_font_GetLowerGDescent(const void *font)
 {
-  return u8g_font_get_byte(font, 12);
+	return u8g_font_get_byte((const u8g_fntpgm_uint8_t *)font, 12);
 }
 
 int8_t u8g_font_GetFontAscent(const void *font)
 {
-  return u8g_font_get_byte(font, 13);
+	return u8g_font_get_byte((const u8g_fntpgm_uint8_t *)font, 13);
 }
 
 int8_t u8g_font_GetFontDescent(const void *font)
 {
-  return u8g_font_get_byte(font, 14);
+	return u8g_font_get_byte((const u8g_fntpgm_uint8_t *)font, 14);
 }
 
 int8_t u8g_font_GetFontXAscent(const void *font)
 {
-  return u8g_font_get_byte(font, 15);
+	return u8g_font_get_byte((const u8g_fntpgm_uint8_t *)font, 15);
 }
 
 int8_t u8g_font_GetFontXDescent(const void *font)
 {
-  return u8g_font_get_byte(font, 16);
+	return u8g_font_get_byte((const u8g_fntpgm_uint8_t *)font, 16);
 }
 
 
 /* return the data start for a font and the glyph pointer */
 static uint8_t *u8g_font_GetGlyphDataStart(const void *font, u8g_glyph_t g)
 {
-  return ((u8g_fntpgm_uint8_t *)g) + u8g_font_GetFontGlyphStructureSize(font);
+	return ((u8g_fntpgm_uint8_t *)g) + u8g_font_GetFontGlyphStructureSize((const u8g_fntpgm_uint8_t *)font);
 }
 
 /* calculate the overall length of the font, only used to create the picture for the google wiki */
 size_t u8g_font_GetSize(const void *font)
 {
   uint8_t *p = (uint8_t *)(font);
-  uint8_t font_format = u8g_font_GetFormat(font);
-  uint8_t data_structure_size = u8g_font_GetFontGlyphStructureSize(font);
+  uint8_t font_format = u8g_font_GetFormat((const u8g_fntpgm_uint8_t *)font);
+  uint8_t data_structure_size = u8g_font_GetFontGlyphStructureSize((const u8g_fntpgm_uint8_t *)font);
   uint8_t start, end;
   uint8_t i;
   uint8_t mask = 255;

@@ -57,7 +57,7 @@ void u8g_pb8v1_Init(u8g_pb_t *b, void *buf, u8g_uint_t width)
 void u8g_pb8v1_set_pixel(u8g_pb_t *b, u8g_uint_t x, u8g_uint_t y, uint8_t color_index)
 {
   register uint8_t mask;
-  uint8_t *ptr = b->buf;
+  uint8_t *ptr = (uint8_t *)b->buf;
   
   y -= b->p.page_y0;
   mask = 1;

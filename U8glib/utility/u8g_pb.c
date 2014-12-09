@@ -186,6 +186,6 @@ uint8_t u8g_pb_Is8PixelVisible(u8g_pb_t *b, u8g_dev_arg_pixel_t *arg_pixel)
 
 uint8_t u8g_pb_WriteBuffer(u8g_pb_t *b, u8g_t *u8g, u8g_dev_t *dev)
 {
-  return u8g_WriteSequence(u8g, dev, b->width, b->buf);  
+  return u8g_WriteSequence(u8g, dev, b->width, (uint8_t *)b->buf);  
 }
 
