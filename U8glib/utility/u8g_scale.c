@@ -47,7 +47,7 @@ void u8g_UndoScale(u8g_t *u8g)
 {
   if ( u8g->dev != &u8g_dev_scale )
     return;
-  u8g->dev = u8g_dev_scale.dev_mem;
+  u8g->dev = (u8g_dev_t *)u8g_dev_scale.dev_mem;
   u8g_UpdateDimension(u8g);
 }
 

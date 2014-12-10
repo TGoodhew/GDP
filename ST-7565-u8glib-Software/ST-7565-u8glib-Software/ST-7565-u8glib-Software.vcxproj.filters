@@ -143,6 +143,21 @@
     <ClCompile Include="..\..\U8glib\utility\u8g_com_arduino_common.c">
       <Filter>Source Files\u8glib_Utility</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_scale.c">
+      <Filter>Source Files\u8glib_Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_rect.c">
+      <Filter>Source Files\u8glib_Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_circle.c">
+      <Filter>Source Files\u8glib_Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_line.c">
+      <Filter>Source Files\u8glib_Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_polygon.c">
+      <Filter>Source Files\u8glib_Utility</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
