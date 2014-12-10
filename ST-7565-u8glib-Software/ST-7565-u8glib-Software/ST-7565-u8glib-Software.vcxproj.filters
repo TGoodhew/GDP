@@ -137,6 +137,12 @@
     <ClCompile Include="..\..\U8glib\U8glib.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_com_arduino_sw_spi.c">
+      <Filter>Source Files\u8glib_Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_com_arduino_common.c">
+      <Filter>Source Files\u8glib_Utility</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

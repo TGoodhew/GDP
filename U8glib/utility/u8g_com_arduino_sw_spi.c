@@ -51,7 +51,9 @@
 
 #else 
 #include <Arduino.h> 
+#ifndef INTEL_GALILEO
 #include "wiring_private.h"
+#endif
 #endif
 
 /*=========================================================*/
@@ -203,6 +205,36 @@ static void u8g_com_arduino_do_shift_out_msb_first(uint8_t val)
   } while( i != 0 );
 }
 
+/*=========================================================*/
+/* Intel Galileo Due */
+#elif defined(INTEL_GALILEO)
+static uint8_t u8g_sam_data_pin;
+static uint8_t u8g_sam_clock_pin;
+
+static void u8g_com_arduino_init_shift_out(uint8_t dataPin, uint8_t clockPin)
+{
+	u8g_sam_data_pin = dataPin;
+	u8g_sam_clock_pin = clockPin;
+}
+
+static void u8g_com_arduino_do_shift_out_msb_first(uint8_t val)
+{
+	uint8_t i = 8;
+	do
+	{
+		if (val & 128)
+			digitalWrite(u8g_sam_data_pin, HIGH); // Hook this up into the u8glib write system
+		else
+			digitalWrite(u8g_sam_data_pin, LOW);
+		val <<= 1;
+		//u8g_MicroDelay();	
+		digitalWrite(u8g_sam_clock_pin, HIGH);
+		u8g_MicroDelay();
+		digitalWrite(u8g_sam_clock_pin, LOW);
+		u8g_MicroDelay();
+		i--;
+	} while (i != 0);
+}
 
 #else
 /* empty interface */
@@ -260,7 +292,7 @@ uint8_t u8g_com_arduino_sw_spi_fn(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void
     
     case U8G_COM_MSG_WRITE_SEQ:
       {
-        register uint8_t *ptr = arg_ptr;
+		  register uint8_t *ptr = (uint8_t *)arg_ptr;
         while( arg_val > 0 )
         {
           u8g_com_arduino_do_shift_out_msb_first(*ptr++);
@@ -272,7 +304,7 @@ uint8_t u8g_com_arduino_sw_spi_fn(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void
 
       case U8G_COM_MSG_WRITE_SEQ_P:
       {
-        register uint8_t *ptr = arg_ptr;
+		  register uint8_t *ptr = (uint8_t *)arg_ptr;
         while( arg_val > 0 )
         {
           u8g_com_arduino_do_shift_out_msb_first( u8g_pgm_read(ptr) );
