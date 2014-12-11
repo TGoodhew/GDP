@@ -158,6 +158,9 @@
     <ClCompile Include="..\..\U8glib\utility\u8g_polygon.c">
       <Filter>Source Files\u8glib_Utility</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_com_arduino_hw_spi.c">
+      <Filter>Source Files\u8glib_Utility</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

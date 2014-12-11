@@ -427,6 +427,83 @@ uint8_t u8g_com_arduino_hw_spi_fn(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void
 
 #endif /* U8G_ARDUINO_ATMEGA_HW_SPI */
 
+#if defined (INTEL_GALILEO) /* INTEL GALILEO HW SPI*/
+
+#include "arduino.h"
+#include "spi.h"
+
+
+static uint8_t u8g_spi_out(uint8_t data)
+{
+	SPI.transfer(data);
+
+	return 1;
+}
+
+uint8_t u8g_com_arduino_hw_spi_fn(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void *arg_ptr)
+{
+	switch (msg)
+	{
+	case U8G_COM_MSG_STOP:
+		SPI.end();
+		break;
+
+	case U8G_COM_MSG_INIT:
+		SPI.begin();
+		break;
+
+	case U8G_COM_MSG_ADDRESS:                     /* define cmd (arg_val = 0) or data mode (arg_val = 1) */
+		u8g_com_arduino_digital_write(u8g, U8G_PI_A0, arg_val);
+		break;
+
+	case U8G_COM_MSG_CHIP_SELECT:
+		if (arg_val == 0)
+		{
+			/* disable */
+			u8g_com_arduino_digital_write(u8g, U8G_PI_CS, HIGH);
+		}
+		else
+		{
+			/* enable */
+			u8g_com_arduino_digital_write(u8g, U8G_PI_CS, LOW);
+		}
+		break;
+
+	case U8G_COM_MSG_RESET:
+		if (u8g->pin_list[U8G_PI_RESET] != U8G_PIN_NONE)
+			u8g_com_arduino_digital_write(u8g, U8G_PI_RESET, arg_val);
+		break;
+
+	case U8G_COM_MSG_WRITE_BYTE:
+		u8g_spi_out(arg_val);
+		break;
+
+	case U8G_COM_MSG_WRITE_SEQ:
+	{
+		register uint8_t *ptr = (uint8_t *)arg_ptr;
+		while (arg_val > 0)
+		{
+			u8g_spi_out(*ptr++);
+			arg_val--;
+		}
+	}
+	break;
+	case U8G_COM_MSG_WRITE_SEQ_P:
+	{
+		register uint8_t *ptr = (uint8_t *)arg_ptr;
+		while (arg_val > 0)
+		{
+			u8g_spi_out(u8g_pgm_read(ptr));
+			ptr++;
+			arg_val--;
+		}
+	}
+	break;
+	return 1;
+	}
+}
+#endif
+
 #else /* ARDUINO */
 
 uint8_t u8g_com_arduino_hw_spi_fn(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void *arg_ptr)

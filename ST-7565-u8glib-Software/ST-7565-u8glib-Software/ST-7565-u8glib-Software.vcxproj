@@ -94,6 +94,7 @@
     <ClCompile Include="..\..\U8glib\utility\u8g_clip.c" />
     <ClCompile Include="..\..\U8glib\utility\u8g_com_api.c" />
     <ClCompile Include="..\..\U8glib\utility\u8g_com_arduino_common.c" />
+    <ClCompile Include="..\..\U8glib\utility\u8g_com_arduino_hw_spi.c" />
     <ClCompile Include="..\..\U8glib\utility\u8g_com_arduino_sw_spi.c" />
     <ClCompile Include="..\..\U8glib\utility\u8g_com_null.c" />
     <ClCompile Include="..\..\U8glib\utility\u8g_delay.c" />

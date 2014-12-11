@@ -670,6 +670,15 @@ defined(__18CXX) || defined(__PIC32MX)
 #define U8G_COM_ST7920_HW_SPI u8g_com_null_fn
 #endif
 #endif
+
+#ifndef U8G_COM_SW_SPI
+/* ==== HW SPI Intel Galileo ====*/
+#if defined(INTEL_GALILEO)
+#define U8G_COM_HW_SPI u8g_com_arduino_hw_spi_fn
+#define U8G_COM_ST7920_HW_SPI u8g_com_null_fn
+#endif
+#endif
+
 /* ==== HW SPI, not Arduino ====*/
 #ifndef U8G_COM_HW_SPI
 #if defined(__AVR__)
