@@ -12,7 +12,7 @@
 
 // Hardware SPI
 //	U8GLIB_LM6059(cs, a0[, reset])
-U8GLIB_LM6059 u8g(10, 12, 9);
+U8GLIB_LM6059 u8g(10, 12, 9); // TODO: Need to rewire circuit do to SPI class pin locking
 
 int _tmain(int argc, _TCHAR* argv[])
 {
