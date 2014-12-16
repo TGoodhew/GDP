@@ -148,8 +148,8 @@ void ResetSensor(bool bReset = FALSE)
 {
 	unsigned long timeSinceLastCheck = 0;
 
-	// If the parking sensor isn't on then don't reset it
-	if (!bParkingSensorOn)
+	// If the parking sensor isn't on then don't reset it unless this is a forced reset
+	if ((!bParkingSensorOn) & (bReset == FALSE))
 		return;
 
 	// Get the time difference since the last check
@@ -254,7 +254,7 @@ void TurnParkingSensorOn()
 // This function turns the MB1040 off
 void TurnParkingSensorOff()
 {
-	bParkingSensorOn = true;
+	bParkingSensorOn = false;
 	digitalWrite(PIN_PWR_MB1040, HIGH); // Turn power off to the MB 1040
 	delay(SENSOR_SHUTDOWN_DELAY); // Give the sensor a chance to turn off
 }
