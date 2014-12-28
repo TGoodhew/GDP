@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "I2CTest", "I2CTest\I2CTest.vcxproj", "{B7FC0DB7-395C-4BC3-83D8-29B27CB3A150}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B7FC0DB7-395C-4BC3-83D8-29B27CB3A150}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B7FC0DB7-395C-4BC3-83D8-29B27CB3A150}.Debug|Win32.Build.0 = Debug|Win32
+		{B7FC0DB7-395C-4BC3-83D8-29B27CB3A150}.Debug|Win32.Deploy.0 = Debug|Win32
+		{B7FC0DB7-395C-4BC3-83D8-29B27CB3A150}.Release|Win32.ActiveCfg = Release|Win32
+		{B7FC0DB7-395C-4BC3-83D8-29B27CB3A150}.Release|Win32.Build.0 = Release|Win32
+		{B7FC0DB7-395C-4BC3-83D8-29B27CB3A150}.Release|Win32.Deploy.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
