@@ -111,6 +111,7 @@
     <ClCompile Include="..\..\U8glib\utility\u8g_rect.c" />
     <ClCompile Include="..\..\U8glib\utility\u8g_scale.c" />
     <ClCompile Include="..\..\U8glib\utility\u8g_state.c" />
+    <ClCompile Include="..\..\U8glib\utility\u8g_u8toa.c" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
