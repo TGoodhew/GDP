@@ -38,6 +38,7 @@
 
 #include <stddef.h>
 #include "u8g.h"
+#include "spi.h"
 
 uint8_t u8g_call_dev_fn(u8g_t *u8g, u8g_dev_t *dev, uint8_t msg, void *arg)
 {
@@ -267,6 +268,9 @@ uint8_t u8g_InitHWSPI(u8g_t *u8g, u8g_dev_t *dev, uint8_t cs, uint8_t a0, uint8_
   u8g->pin_list[U8G_PI_A0] = a0;
   u8g->pin_list[U8G_PI_RESET] = reset;
   
+  // Initialize the SPI class
+  SPI.begin();
+
   return u8g_Begin(u8g);
 }
 
