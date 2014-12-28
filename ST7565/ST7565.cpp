@@ -25,6 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 //#include <Wire.h>
 #if defined (WIN32)
 	#include "arduino.h"
+	#include "spi.h"
 	#include <stdlib.h>
 #else
 	#include <avr/pgmspace.h>
@@ -438,7 +439,8 @@ void ST7565::st7565_init(void) {
 }
 
 inline void ST7565::spiwrite(uint8_t c) {
-  shiftOut(sid, sclk, MSBFIRST, c);
+  //shiftOut(sid, sclk, MSBFIRST, c);
+	SPI.transfer(c);
   /*
   int8_t i;
   for (i=7; i>=0; i--) {

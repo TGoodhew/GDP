@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include "arduino.h"
 #include "..\..\ST7565\ST7565.h"
+#include "spi.h"
 
 int freeRam(void);
 void testdrawbitmap(const uint8_t *bitmap, uint8_t w, uint8_t h);
@@ -54,6 +55,10 @@ const static unsigned char __attribute__((progmem)) logo16_glcd_bmp[] = {
 
 // The setup() method runs once, when the sketch starts
 void setup()   {
+
+	SPI.setClockDivider(SPI_CLOCK_DIV16);
+	SPI.begin();
+
 	Serial.begin(9600);
 
 	Serial.print(freeRam());
