@@ -27,7 +27,7 @@
 
 m2_rom_char_p m2_el_fnfmt_get_fmt_by_element(m2_rom_void_p element)
 {
-  return m2_rom_get_rom_ptr( element, offsetof(m2_el_fnfmt_t, fmt) );
+	return (m2_rom_char_p)m2_rom_get_rom_ptr(element, offsetof(m2_el_fnfmt_t, fmt));
 }
 
 m2_rom_char_p m2_el_fnfmt_get_fmt(const m2_el_fnarg_p fn_arg)

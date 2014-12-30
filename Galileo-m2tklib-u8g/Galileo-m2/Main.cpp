@@ -3,30 +3,36 @@
 
 #include "stdafx.h"
 #include "arduino.h"
+#include "..\..\M2tklib\M2tk.h"
+#include "..\..\M2tklib\utility\m2ghu8g.h"
+#include "spi.h"
+#include "..\..\U8glib\U8glib.h"
+
+U8GLIB_LM6059 u8g(8, 10, 9);
 
 int _tmain(int argc, _TCHAR* argv[])
 {
     return RunArduinoSketch();
 }
 
-int led = 13;  // This is the pin the LED is attached to.
+M2_LABEL(hello_world_label, NULL, "Hello World");
+M2tk m2(&hello_world_label, NULL, NULL, m2_gh_u8g_bfs);
 
-void setup()
-{
-    // TODO: Add your code here
-    
-    pinMode(led, OUTPUT);       // Configure the pin for OUTPUT so you can turn on the LED.
+void draw(void) {
+	m2.draw();
 }
 
-// the loop routine runs over and over again forever:
-void loop()
-{
-    // TODO: Add your code here
+void setup() {
+	/* connect u8glib with m2tklib */
+	m2_SetU8g(u8g.getU8g(), m2_u8g_box_icon);
 
-    digitalWrite(led, LOW);    // turn the LED off by making the voltage LOW
-    Log(L"LED OFF\n");
-    delay(1000);               // wait for a second
-    digitalWrite(led, HIGH);   // turn the LED on by making the voltage HIGH
-    Log(L"LED ON\n");
-    delay(1000);               // wait for a second
+	/* assign u8g font to index 0 */
+	m2.setFont(0, u8g_font_7x13);
+}
+
+void loop() {
+	u8g.firstPage();
+	do {
+		draw();
+	} while (u8g.nextPage());
 }

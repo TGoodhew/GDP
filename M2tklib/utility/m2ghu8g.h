@@ -26,8 +26,8 @@
 #ifndef _M2GHU8G_H
 #define _M2GHU8G_H
 
-#include "utility/m2.h"
-#include "utility/u8g.h"
+#include "..\..\M2tklib\utility\m2.h"
+#include "..\..\U8glib\utility\u8g.h"
 
 #ifdef __cplusplus
 extern "C" {

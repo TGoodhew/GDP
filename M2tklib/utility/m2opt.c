@@ -170,7 +170,7 @@ static char m2_calc_nth_cmd(uint8_t n)
 
 void m2_parser_set_str(m2_rom_void_p str)
 {
-  m2_parser_str = str;
+	m2_parser_str = (m2_rom_char_p)str;
 }
 
 uint8_t m2_parser_get_cmd_val(char cmd, uint8_t not_found_val)

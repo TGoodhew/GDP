@@ -206,7 +206,7 @@ static void u8g_com_arduino_do_shift_out_msb_first(uint8_t val)
 }
 
 /*=========================================================*/
-/* Intel Galileo Due */
+/* Intel Galileo */
 #elif defined(INTEL_GALILEO)
 static uint8_t u8g_sam_data_pin;
 static uint8_t u8g_sam_clock_pin;

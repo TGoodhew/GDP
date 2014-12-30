@@ -13,6 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\m2tklib">
+      <UniqueIdentifier>{50033a03-0e6b-40c2-80c2-f818d50714f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\u8glib">
+      <UniqueIdentifier>{5a0573c6-2f51-48f9-9601-ae293fc264f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\u8glib">
+      <UniqueIdentifier>{b946984e-a0c1-46af-b33a-ca1653956484}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\m2tklib">
+      <UniqueIdentifier>{94e99b23-4748-42c4-a23b-24813b36c94b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -21,6 +33,21 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\M2tklib\M2tk.h">
+      <Filter>Header Files\m2tklib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\U8glib\U8glib.h">
+      <Filter>Header Files\u8glib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\M2tklib\utility\m2ghu8g.h">
+      <Filter>Header Files\m2tklib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\M2tklib\utility\m2.h">
+      <Filter>Header Files\m2tklib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\U8glib\utility\u8g.h">
+      <Filter>Header Files\u8glib</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -28,6 +55,162 @@
     </ClCompile>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_ll_api.c">
+      <Filter>Source Files\u8glib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_state.c">
+      <Filter>Source Files\u8glib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_font.c">
+      <Filter>Source Files\u8glib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_clip.c">
+      <Filter>Source Files\u8glib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_dev_st7565_lm6059.c">
+      <Filter>Source Files\u8glib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_com_arduino_hw_spi.c">
+      <Filter>Source Files\u8glib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_com_arduino_sw_spi.c">
+      <Filter>Source Files\u8glib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_com_arduino_common.c">
+      <Filter>Source Files\u8glib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_delay.c">
+      <Filter>Source Files\u8glib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_com_api.c">
+      <Filter>Source Files\u8glib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_pb.c">
+      <Filter>Source Files\u8glib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_pb8v1.c">
+      <Filter>Source Files\u8glib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_pb16v1.c">
+      <Filter>Source Files\u8glib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_page.c">
+      <Filter>Source Files\u8glib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\U8glib.cpp">
+      <Filter>Source Files\u8glib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_font_data.c">
+      <Filter>Source Files\u8glib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\M2tk.cpp">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2obj.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2draw.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2key.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2rom.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2navutl.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2navupdn.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2navnext.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2fnarg.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2gfx.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2navroot.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2navinit.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2dfs.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2usrnext.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2null.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2elfnfmt.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2opt.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2navfirst.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2ellabel.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2elstr.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2gfxutl.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2align.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2ghu8gbfs.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2ghu8gutl.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2ghdummy.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2elsb.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2elslbase.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2ellistv.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2ellistbase.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2ellistcalc.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2elsubutl.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_rect.c">
+      <Filter>Source Files\u8glib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_bitmap.c">
+      <Filter>Source Files\u8glib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\U8glib\utility\u8g_circle.c">
+      <Filter>Source Files\u8glib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2ghu8gicon.c">
+      <Filter>Source Files\m2tklib</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
