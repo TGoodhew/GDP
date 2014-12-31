@@ -25,8 +25,6 @@ int _tmain(int argc, _TCHAR* argv[])
     return RunArduinoSketch();
 }
 
-int ledPin = 13;    // LED connected to digital pin 13
-
 // the LCD backlight is connected up to a pin so you can turn it on & off
 #define BACKLIGHT_LED 5
 
