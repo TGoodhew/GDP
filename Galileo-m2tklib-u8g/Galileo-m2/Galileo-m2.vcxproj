@@ -108,6 +108,7 @@
     <ClCompile Include="..\..\M2tklib\utility\m2elslbase.c" />
     <ClCompile Include="..\..\M2tklib\utility\m2elstr.c" />
     <ClCompile Include="..\..\M2tklib\utility\m2elsubutl.c" />
+    <ClCompile Include="..\..\M2tklib\utility\m2esi2c.cpp" />
     <ClCompile Include="..\..\M2tklib\utility\m2fnarg.c" />
     <ClCompile Include="..\..\M2tklib\utility\m2gfx.c" />
     <ClCompile Include="..\..\M2tklib\utility\m2gfxutl.c" />
