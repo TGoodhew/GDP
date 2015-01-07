@@ -278,6 +278,51 @@
     <ClCompile Include="..\..\M2tklib\utility\m2esi2c.cpp">
       <Filter>Source Files\m2tklib</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2elu32.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2ellisth.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2elbutton.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2eh2bs.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2navdataup.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2navdatadn.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2usrupdn.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2esarduino.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2pin.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2eh4bs.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2usrprev.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2navprev.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2navlast.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2ellabelptr.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\M2tklib\utility\m2elstrptr.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

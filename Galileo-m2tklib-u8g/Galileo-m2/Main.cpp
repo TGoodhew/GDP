@@ -8,15 +8,35 @@
 #include "spi.h"
 #include "..\..\U8glib\U8glib.h"
 
+// Temp function defs
+extern "C" uint8_t m2_es_i2c(m2_p ep, uint8_t msg);
+
+uint32_t number = 1234;
+char	*str;
 U8GLIB_LM6059 u8g(8, 10, 9);
 
 int _tmain(int argc, _TCHAR* argv[])
 {
+	str = (char *)malloc(512);
+	memset(str, 0, 512);
     return RunArduinoSketch();
 }
 
-M2_LABEL(hello_world_label, NULL, "Hello World");
-M2tk m2(&hello_world_label, NULL, NULL, m2_gh_u8g_bfs);
+void fn_ok(m2_el_fnarg_p fnarg) {
+	/* do something with the number */
+	sprintf(str, "Selected %d", number);
+}
+
+M2_LABELPTR(el_selected, NULL, (const char**)(&str));
+M2_LABEL(el_label, NULL, "Num: ");
+M2_U32NUM(el_num, "a1c4", &number);
+M2_BUTTON(el_ok, "", " ok ", fn_ok);
+M2_LIST(list) = { &el_label, &el_num, &el_ok };
+M2_HLIST(el_hlist, NULL, list);
+M2_LIST(toplist) = { &el_selected, &el_hlist};
+M2_VLIST(top_el_vlist, NULL, toplist);
+
+M2tk m2(&top_el_vlist, m2_es_i2c, m2_eh_4bs, m2_gh_u8g_bfs);
 
 void draw(void) {
 	m2.draw();
@@ -31,8 +51,13 @@ void setup() {
 }
 
 void loop() {
-	u8g.firstPage();
-	do {
-		draw();
-	} while (u8g.nextPage());
+	m2.checkKey();
+	if (m2.handleKey() != 0)
+	{
+		u8g.firstPage();
+		do {
+			m2.checkKey();
+			draw();
+		} while (u8g.nextPage());
+	}
 }

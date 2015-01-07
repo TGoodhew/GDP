@@ -54,7 +54,7 @@ const static unsigned char __attribute__((progmem)) logo16_glcd_bmp[] = {
 // The setup() method runs once, when the sketch starts
 void setup()   {
 
-	SPI.setClockDivider(SPI_CLOCK_DIV16);
+	SPI.setClockDivider(SPI_CLOCK_DIV4);
 	SPI.begin();
 
 	Serial.begin(9600);

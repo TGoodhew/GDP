@@ -22,17 +22,27 @@
 #define MCP23008_OLAT 0x0A
 
 // GPIO Masks
-#define PORT_GP0	0x01
-#define PORT_GP1	0x02
-#define PORT_GP2	0x04
-#define PORT_GP3	0x08
-#define PORT_GP4	0x10
-#define PORT_GP5	0x20
-#define PORT_GP6	0x40
-#define PORT_GP7	0x80
+#define PORT_GP0_MASK	0x01
+#define PORT_GP1_MASK	0x02
+#define PORT_GP2_MASK	0x04
+#define PORT_GP3_MASK	0x08
+#define PORT_GP4_MASK	0x10
+#define PORT_GP5_MASK	0x20
+#define PORT_GP6_MASK	0x40
+#define PORT_GP7_MASK	0x80
 
+// GPIO Port Bits
+#define PORT_GP0	0
+#define PORT_GP1	1
+#define PORT_GP2	2
+#define PORT_GP3	3
+#define PORT_GP4	4
+#define PORT_GP5	5
+#define PORT_GP6	6
+#define PORT_GP7	7
 
 int keyVal = 0;
+
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -47,13 +57,13 @@ void setup()
 	// Set the IO directions
 	Wire.beginTransmission(0x20);	// Device I2C address
 	Wire.write(byte(MCP23008_IODIR));			// Select IODIR Register
-	Wire.write(byte(PORT_GP0 | PORT_GP1 | PORT_GP2 | PORT_GP3 | PORT_GP4 | PORT_GP5));			// Set GP0 - GP5 as inputs, GP6 - GP7 as outputs
+	Wire.write(byte(PORT_GP0_MASK | PORT_GP1_MASK | PORT_GP2_MASK | PORT_GP3_MASK | PORT_GP4_MASK | PORT_GP5_MASK));			// Set GP0 - GP5 as inputs, GP6 - GP7 as outputs
 	Wire.endTransmission();
 
 	// Set the pull up resistors
 	Wire.beginTransmission(0x20);	// Device I2C address
 	Wire.write(byte(MCP23008_GPPU));			// Select GPPU Register
-	Wire.write(byte(PORT_GP0 | PORT_GP1));			// Turn on GP0 & GP1 Resistors
+	Wire.write(byte(PORT_GP0_MASK | PORT_GP1_MASK));			// Turn on GP0 & GP1 Resistors
 	Wire.endTransmission();
 }
 
@@ -72,56 +82,56 @@ void loop()
 	{
 		keyVal = Wire.read();
 
-		if (keyVal & PORT_GP0)
+		if (bitRead(keyVal, PORT_GP0))
 			Log("Door Switch 1\n");
-		if (keyVal & PORT_GP1)
+		if (bitRead(keyVal, PORT_GP1))
 			Log("Door Switch 2\n");
-		if (keyVal & PORT_GP2)
+		if (bitRead(keyVal, PORT_GP2))
 		{
 			Log("Button 1 Pressed\n");
 			// Select the GPIO Register
 			Wire.beginTransmission(0x20);
 			Wire.write(byte(MCP23008_GPIO));
-			Wire.write(byte(keyVal | PORT_GP6));
+			Wire.write(byte(bitSet(keyVal, PORT_GP6)));
 			Wire.endTransmission();
 
-			Log("Relay 1 High\n");
+			Log("Relay 1 High(%d)\n", keyVal);
 		}
 			
-		if (keyVal & PORT_GP3)
+		if (bitRead(keyVal, PORT_GP3))
 		{
 			Log("Button 2 Pressed\n");
 			// Select the GPIO Register
 			Wire.beginTransmission(0x20);
 			Wire.write(byte(MCP23008_GPIO));
-			Wire.write(byte(keyVal & (PORT_GP0 | PORT_GP1 | PORT_GP2 | PORT_GP3 | PORT_GP4 | PORT_GP5 | PORT_GP7)));
+			Wire.write(byte(bitClear(keyVal, PORT_GP6)));
 			Wire.endTransmission();
 
-			Log("Relay 1 Low\n");
+			Log("Relay 1 Low(%d)\n", keyVal);
 		}
-		if (keyVal & PORT_GP4)
+		if (bitRead(keyVal, PORT_GP4))
 		{
 			Log("Button 3 Pressed\n");
 
 			// Select the GPIO Register
 			Wire.beginTransmission(0x20);
 			Wire.write(byte(MCP23008_GPIO));
-			Wire.write(byte(keyVal | PORT_GP7 ));
+			Wire.write(byte(bitSet(keyVal, PORT_GP7)));
 			Wire.endTransmission();
 
-			Log("Relay 2 High\n");
+			Log("Relay 2 High(%d)\n", keyVal);
 		}
-		if (keyVal & PORT_GP5)
+		if (bitRead(keyVal, PORT_GP5))
 		{
 			Log("Button 4 Pressed\n");
 
 			// Select the GPIO Register
 			Wire.beginTransmission(0x20);
 			Wire.write(byte(MCP23008_GPIO));
-			Wire.write(byte(keyVal & (PORT_GP0 | PORT_GP1 | PORT_GP2 | PORT_GP3 | PORT_GP4 | PORT_GP5 | PORT_GP6)));
+			Wire.write(byte(bitClear(keyVal, PORT_GP7)));
 			Wire.endTransmission();
 
-			Log("Relay 2 Low\n");
+			Log("Relay 2 Low(%d)\n", keyVal);
 		}
 		
 		Log("End Loop\n");

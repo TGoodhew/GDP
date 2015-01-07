@@ -16,7 +16,7 @@ void setup()
 {
 	pinMode(SPI_Enable, OUTPUT);
 	digitalWrite(SPI_Enable, HIGH);
-	SPI.setClockDivider(SPI_CLOCK_DIV16);
+	SPI.setClockDivider(SPI_CLOCK_DIV4);
 	SPI.begin();
 }
 

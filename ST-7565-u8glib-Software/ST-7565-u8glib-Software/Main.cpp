@@ -9,11 +9,11 @@
 //  U8GLIB_LM6059(sck, mosi, cs, a0 [, reset]) 
 
 //U8GLIB_LM6059 u8g(13, 11, 8, 10, 9);
-U8GLIB_LM6059_2X u8g(13, 11, 8, 10, 9);
+//U8GLIB_LM6059_2X u8g(13, 11, 8, 10, 9);
 
 // Hardware SPI
 //	U8GLIB_LM6059(cs, a0[, reset])
-//U8GLIB_LM6059 u8g(8, 10, 9);
+U8GLIB_LM6059 u8g(8, 10, 9);
 
 int _tmain(int argc, _TCHAR* argv[])
 {
