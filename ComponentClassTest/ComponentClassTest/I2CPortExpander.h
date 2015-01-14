@@ -44,5 +44,17 @@ class CI2CPortExpander
 public:
 	CI2CPortExpander();
 	~CI2CPortExpander();
+	// This function sets the IO direction for GPIO
+	int setIODIR();
+	// Configure the input olarity on GPIO registers
+	int setIPOL();
+	// Sets the IOCON register value
+	int setIOCON();
+	// Configures the pullup resistors for GPIO
+	int setGPPU();
+	// Writes to the GPIO register
+	int writeGPIO();
+	// Reads the GPIO register
+	int readGPIO();
 };
 
