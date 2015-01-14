@@ -3,9 +3,9 @@
 
 #include "stdafx.h"
 #include "arduino.h"
-#include "spi.h"
+#include "GarageDoorSenorArray.h"
 
-#define SPI_Enable	10
+CGarageDoorSenorArray door(1, 2);
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -14,18 +14,11 @@ int _tmain(int argc, _TCHAR* argv[])
 
 void setup()
 {
-	pinMode(SPI_Enable, OUTPUT);
-	digitalWrite(SPI_Enable, HIGH);
-	SPI.setClockDivider(SPI_CLOCK_DIV2);
-	SPI.begin();
+
 }
 
 // the loop routine runs over and over again forever:
 void loop()
 {
-	digitalWrite(SPI_Enable, LOW);
-	SPI.transfer(83);
-	SPI.transfer(72);
-	digitalWrite(SPI_Enable, HIGH);
-	delay(1);
+
 }

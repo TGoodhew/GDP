@@ -269,7 +269,7 @@ uint8_t u8g_InitHWSPI(u8g_t *u8g, u8g_dev_t *dev, uint8_t cs, uint8_t a0, uint8_
   u8g->pin_list[U8G_PI_RESET] = reset;
   
   // Initialize the SPI class
-  SPI.setClockDivider(SPI_CLOCK_DIV4); // BUG: The 4050 I'm using to go from 5v to 3v3 limits the SPI speed.
+  SPI.setClockDivider(SPI_CLOCK_DIV2); // BUG: The 4050 I'm using to go from 5v to 3v3 limits the SPI speed.
   SPI.begin();
 
   return u8g_Begin(u8g);
