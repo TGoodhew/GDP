@@ -4,8 +4,9 @@
 #include "stdafx.h"
 #include "arduino.h"
 #include "GarageDoorSenorArray.h"
+#include "UltrasonicSensor.h"
 
-CGarageDoorSenorArray door(1, 2);
+CUltrasonicSensor mb1040(3, 1);
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -20,5 +21,8 @@ void setup()
 // the loop routine runs over and over again forever:
 void loop()
 {
-
+	mb1040.TurnSensorOn();
+	delay(1000);
+	mb1040.TurnSensorOff();
+	delay(1000);
 }
