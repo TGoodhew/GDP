@@ -11,7 +11,6 @@ CUltrasonicSensor::CUltrasonicSensor(int powerPin, int readPin)
 
 	pinMode(powerPin, OUTPUT);
 	pinMode(readPin, INPUT);
-	//pinMode(6, OUTPUT);
 
 	// Start the serial access for the MB1040
 	Serial.begin(CBR_9600, Serial.SERIAL_8N1);
@@ -48,9 +47,44 @@ void CUltrasonicSensor::TurnSensorOff()
 // Reads the current sensor value
 int CUltrasonicSensor::ReadSensor()
 {
+	char serialData = 0;
+	char stringDistance[3];
+	int distance = 0;
+
 	Log("Reading Ultrasonic Sensor\n");
 
-	return 0;
+	memset(stringDistance, 0, sizeof(stringDistance));
+
+	// TODO: Need to work with the sensor to keep the reading current otherwise a single call to 
+	// this function will only read the first reading in the buffer
+
+	// Keep throwing away characters until we get to the start of a distance reading
+	while (Serial.peek() != 'R')
+		Serial.read();
+
+	// A distance reading is now ready so let's read it
+	serialData = Serial.read();
+
+	// Make sure we're at the start of the reading
+	if (serialData == 'R')
+	{
+		int count = 0;
+
+		// Read the 3 character distance string
+		while ((Serial.peek() != '\r') & (count < 3))
+		{
+			stringDistance[count++] = Serial.read();
+		}
+
+		// Convert it into a int
+		distance = atoi(stringDistance);
+	}
+
+	// Log the distance to the console
+	Log("Sensor distance read: %d\n", distance);
+
+	// Return the distance or zero if there was some problem reading
+	return distance;
 }
 
 // This function throws away the sensor start-up information

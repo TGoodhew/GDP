@@ -15,7 +15,6 @@ int _tmain(int argc, _TCHAR* argv[])
 
 void setup()
 {
-	pinMode(6, OUTPUT);
 	mb1040 = new CUltrasonicSensor(3, 1);
 }
 
@@ -23,6 +22,7 @@ void setup()
 void loop()
 {
 	mb1040->TurnSensorOn();
+	mb1040->ReadSensor();
 	delay(1000);
 	mb1040->TurnSensorOff();
 	delay(1000);
