@@ -8,19 +8,25 @@
 class CUltrasonicSensor
 {
 public:
-	CUltrasonicSensor(int powerPin, int readPin);
+	CUltrasonicSensor(int powerPin, int controlPin);
 	~CUltrasonicSensor();
 private:
 	int m_SensorPowerPin;
-	int m_SensorReadPin;
+	int m_SensorControlPin;
 	unsigned long m_SensorUpTime;
+	bool m_ReceivingValidData = false;
 public:
-	// Reads the current sensor value
-	int ReadSensor();
 	void TurnSensorOn();
 	void TurnSensorOff();
+	void ResetSensor();
+	int ReadSensor();
 private:
+	// Reads the current sensor value
 	// This function throws away the sensor start-up information
 	void WaitForValidSensorData();
+	void StartRanging();
+	void StopRanging();
+	void TakeReading();
+	void ClearSerialRXBuffer();
 };
 

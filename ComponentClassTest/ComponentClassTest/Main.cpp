@@ -15,15 +15,15 @@ int _tmain(int argc, _TCHAR* argv[])
 
 void setup()
 {
-	mb1040 = new CUltrasonicSensor(3, 1);
+	mb1040 = new CUltrasonicSensor(3, 5);
+
+	Log("Main Turn On\n");
+	mb1040->TurnSensorOn();
 }
 
 // the loop routine runs over and over again forever:
 void loop()
 {
-	mb1040->TurnSensorOn();
-	mb1040->ReadSensor();
-	delay(1000);
-	mb1040->TurnSensorOff();
-	delay(1000);
+	Log("Main loop Distance: %d\n", mb1040->ReadSensor());
+	delay(3000);
 }
