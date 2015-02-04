@@ -1,33 +1,30 @@
 #include "GarageDoorSenorArray.h"
 
 
-CGarageDoorSenorArray::CGarageDoorSenorArray(int openSensorPin, int closedSensorPin)
+CGarageDoorSenorArray::CGarageDoorSenorArray(I2CExpPorts doorOpenSensorPort, I2CExpPorts doorClosedSensorPort, CI2CPortExpander* portExpander)
 {
-	m_DoorOpenSensor = new CDoorSensor(openSensorPin);
-	m_DoorClosedSensor = new CDoorSensor(closedSensorPin);
+	m_doorOpenSensor = std::make_unique<CDoorSensor>(doorOpenSensorPort, portExpander);
+	m_doorClosedSensor = std::make_unique<CDoorSensor>(doorClosedSensorPort, portExpander);
 }
 
 
 CGarageDoorSenorArray::~CGarageDoorSenorArray()
 {
-	delete m_DoorOpenSensor;
-	delete m_DoorClosedSensor;
+
 }
 
 
 DoorState CGarageDoorSenorArray::GetDoorState()
 {
-	bool doorOpen, doorClosed;
+	DoorSensorState openSensor, closedSensor;
 
-	// Read the door sensors
-	doorOpen = m_DoorOpenSensor->getSensorState();
-	doorClosed = m_DoorClosedSensor->getSensorState();
+	openSensor = m_doorOpenSensor->getSensorState();
+	closedSensor = m_doorClosedSensor->getSensorState();
 
-	// return the appropriate door state
-	if (doorOpen && !doorClosed)
-		return DoorOpen;
-	else if (doorClosed && !doorOpen)
-		return DoorClosed;
+	if ((openSensor == DoorSensorState::Open) && (closedSensor == DoorSensorState::Closed))
+		return DoorState::DoorClosed;
+	else if ((openSensor == DoorSensorState::Closed) && (closedSensor == DoorSensorState::Open))
+		return DoorState::DoorOpen;
 	else
-		return DoorTravelling;
+		return DoorState::DoorTravelling;
 }

@@ -118,6 +118,13 @@ byte CI2CPortExpander::readGPIO()
 	return readRegister(I2CExpRegisters::MCP23008_GPIO);
 }
 
+I2CExpGPIOValue CI2CPortExpander::readGPIOPort(I2CExpPorts readPort)
+{
+	byte gpioValue = readGPIO();
+
+	return (I2CExpGPIOValue)bitRead(gpioValue, (byte)readPort);
+}
+
 void CI2CPortExpander::setGPINTEN(I2CExpPorts targetPort, I2CExpGPINTEnable gpintEnable, bool updateFlag)
 {
 	setPortBit(targetPort, (I2CExpRegisterBit)gpintEnable, &m_gpintenSetting);

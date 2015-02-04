@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "arduino.h"
 #include "I2CPortExpander.h"
+#include <memory>
 
 #define RELAY_ON		HIGH
 #define RELAY_OFF		LOW
@@ -14,7 +15,7 @@ public:
 	CRelay(int numberChannels, I2CExpPorts relayPorts[], int powerPin, CI2CPortExpander* portExpander);
 	~CRelay();
 private:
-	I2CExpPorts* m_relayPorts;
+	std::unique_ptr <I2CExpPorts[]> m_relayPorts;
 	bool m_RelayPower;
 	int m_RelayPowerPin;
 	CI2CPortExpander* m_portExpander = nullptr;

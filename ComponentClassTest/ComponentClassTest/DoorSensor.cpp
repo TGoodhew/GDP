@@ -1,13 +1,11 @@
 #include "DoorSensor.h"
 
 
-CDoorSensor::CDoorSensor(int sensorPin)
+CDoorSensor::CDoorSensor(I2CExpPorts sensorPort, CI2CPortExpander* portExpander)
 {
-	// Move the sensor pin into a private member variable
-	m_sensorPin = sensorPin;
+	m_sensorPort = sensorPort;
 
-	// set the pinMode of the sensor pin to be input
-	pinMode(m_sensorPin, INPUT);
+	m_portExpander = portExpander;
 }
 
 
@@ -17,15 +15,7 @@ CDoorSensor::~CDoorSensor()
 
 
 // Returns the current sensor by reading the value on the associated sensor pin
-bool CDoorSensor::getSensorState()
+DoorSensorState CDoorSensor::getSensorState()
 {
-	// Read the pin and return the bool result
-	return digitalRead(m_sensorPin) != 0;
-}
-
-
-// Returns the assigned value for the sensor pin
-int CDoorSensor::getSensorPin()
-{
-	return m_sensorPin;
+	return (DoorSensorState)(m_portExpander->readGPIOPort(m_sensorPort));
 }

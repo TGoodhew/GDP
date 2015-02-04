@@ -2,23 +2,25 @@
 #include "stdafx.h"
 #include "arduino.h"
 #include "DoorSensor.h"
+#include "I2CPortExpander.h"
+#include <memory>
 
 
-typedef enum doorState
+enum class DoorState
 {
 	DoorOpen, // Indicates that the sensor array is reading the the door is in the open position
 	DoorClosed, // Indicates that the sensor array is reading the the door is in the closed position
 	DoorTravelling, // Indicates that the sensor array is reading the the door is neither open or closed
-} DoorState;
+};
 
 class CGarageDoorSenorArray
 {
 public:
-	CGarageDoorSenorArray(int openSensorPin, int closedSensorPin);
+	CGarageDoorSenorArray(I2CExpPorts doorOpenSensorPort, I2CExpPorts doorClosedSensorPort, CI2CPortExpander* portExpander);
 	~CGarageDoorSenorArray();
 private:
-	CDoorSensor* m_DoorOpenSensor;
-	CDoorSensor* m_DoorClosedSensor;
+	std::unique_ptr<CDoorSensor> m_doorOpenSensor = nullptr;
+	std::unique_ptr<CDoorSensor> m_doorClosedSensor = nullptr;
 public:
 	DoorState GetDoorState();
 };

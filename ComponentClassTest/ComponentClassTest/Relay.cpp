@@ -1,10 +1,11 @@
 #include "Relay.h"
 
+
 CRelay::CRelay(int numberChannels, I2CExpPorts relayPorts[], int powerPin, CI2CPortExpander* portExpander)
 {
 	m_portExpander = portExpander;
 
-	m_relayPorts = new I2CExpPorts[numberChannels];
+	m_relayPorts = std::make_unique<I2CExpPorts[]>(numberChannels);
 
 	for (int i = 0; i < numberChannels; i++)
 	{

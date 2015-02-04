@@ -167,6 +167,7 @@ public:
 	// Reads the GPIO register
 	byte readGPIO();
 	// Sets the GPINTEN register value
+	I2CExpGPIOValue readGPIOPort(I2CExpPorts readPort);
 	void setGPINTEN(I2CExpPorts targetPort, I2CExpGPINTEnable gpintEnable, bool updateFlag);
 	// Sets the DEFVAL register value
 	void setDEFVAL(I2CExpPorts targetPort, I2CExpDEFVALComparison defValue, bool updateFlag);
