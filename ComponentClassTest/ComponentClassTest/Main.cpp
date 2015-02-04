@@ -8,6 +8,7 @@
 #include "I2CPortExpander.h"
 #include "Relay.h"
 #include "DoorSensor.h"
+#include <ctime>
 
 CUltrasonicSensor* mb1040;
 CI2CPortExpander* mcp23008;
@@ -44,6 +45,8 @@ void setup()
 // the loop routine runs over and over again forever:
 void loop()
 {
+	std::time_t t = std::time(nullptr);
+	Log("Start Loop Time: %s\n", std::asctime(std::localtime(&t)));
 	Log("Main loop Distance: %d\n", mb1040->ReadSensor());
 	Log("Garage door sensor array state: %d\n", doorSensorArray->GetDoorState());
 	relay->openRelayChannel(0);
@@ -53,5 +56,7 @@ void loop()
 	relay->openRelayChannel(1);
 	Log("Main loop Distance: %d\n", mb1040->ReadSensor());
 	Log("Garage door sensor array state: %d\n", doorSensorArray->GetDoorState());
+	t = std::time(nullptr);
+	Log("End Loop Time: %s\n", std::asctime(std::localtime(&t)));
 	delay(2000);
 }
