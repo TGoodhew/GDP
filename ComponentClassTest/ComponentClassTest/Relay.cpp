@@ -10,6 +10,9 @@ CRelay::CRelay(int numberChannels, I2CExpPorts relayPorts[], int powerPin, CI2CP
 	for (int i = 0; i < numberChannels; i++)
 	{
 		m_relayPorts[i] = relayPorts[i];
+
+		// Configure the port expander to use the port as output
+		portExpander->setIODIR(relayPorts[i], I2CExpIODirection::Output, true);
 	}
 
 	// Store the power control pin
