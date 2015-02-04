@@ -1,6 +1,7 @@
 #pragma once
 #include "stdafx.h"
 #include "arduino.h"
+#include "I2CPortExpander.h"
 
 #define RELAY_ON		HIGH
 #define RELAY_OFF		LOW
@@ -10,14 +11,14 @@
 class CRelay
 {
 public:
-	CRelay(int numberChannels, int relayPins[], int powerPin);
+	CRelay(int numberChannels, I2CExpPorts relayPorts[], int powerPin, CI2CPortExpander* portExpander);
 	~CRelay();
 private:
-	int *m_RelayControlPins;
+	I2CExpPorts* m_relayPorts;
 	bool m_RelayPower;
 	int m_RelayPowerPin;
+	CI2CPortExpander* m_portExpander = nullptr;
 public:
-
 	// Turns the relay board on
 	void turnRelayOn();
 	// Turns the relay board off

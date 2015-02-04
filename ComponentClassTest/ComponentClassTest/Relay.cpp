@@ -1,16 +1,14 @@
 #include "Relay.h"
 
-
-CRelay::CRelay(int numberChannels, int relayPins[], int powerPin)
+CRelay::CRelay(int numberChannels, I2CExpPorts relayPorts[], int powerPin, CI2CPortExpander* portExpander)
 {
-	// Create a private array of the 
-	m_RelayControlPins = new int[numberChannels];
+	m_portExpander = portExpander;
 
-	// Copy the relayPins array and set the pin as OUTPUT
+	m_relayPorts = new I2CExpPorts[numberChannels];
+
 	for (int i = 0; i < numberChannels; i++)
 	{
-		m_RelayControlPins[i] = relayPins[i];
-		pinMode(m_RelayControlPins[i], OUTPUT);
+		m_relayPorts[i] = relayPorts[i];
 	}
 
 	// Store the power control pin
@@ -22,7 +20,6 @@ CRelay::CRelay(int numberChannels, int relayPins[], int powerPin)
 	// Turn the relay on
 	digitalWrite(m_RelayPowerPin, RELAY_ON);
 }
-
 
 CRelay::~CRelay()
 {
@@ -43,13 +40,11 @@ void CRelay::turnRelayOff()
 // Causes the relay to open the specified contact
 void CRelay::openRelayChannel(int relayChannel)
 {
-	// Decrement the relay channel number to be an array index
-	digitalWrite(m_RelayControlPins[relayChannel - 1], RELAY_OPEN);
+	m_portExpander->writeGPIO(m_relayPorts[relayChannel], (I2CExpGPIOValue)RELAY_OPEN, true);
 }
 
 // Causes the relay to close the specified contact
 void CRelay::closeRelayChannel(int relayChannel)
 {
-	// Decrement the relay channel number to be an array index
-	digitalWrite(m_RelayControlPins[relayChannel - 1], RELAY_CLOSED);
+	m_portExpander->writeGPIO(m_relayPorts[relayChannel], (I2CExpGPIOValue)RELAY_CLOSED, true);
 }
