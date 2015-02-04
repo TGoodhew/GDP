@@ -12,10 +12,10 @@
 class CRelay
 {
 public:
-	CRelay(int numberChannels, I2CExpPorts relayPorts[], int powerPin, CI2CPortExpander* portExpander);
+	CRelay(int numberChannels, CI2CPortExpander::I2CExpPorts relayPorts[], int powerPin, CI2CPortExpander* portExpander);
 	~CRelay();
 private:
-	std::unique_ptr <I2CExpPorts[]> m_relayPorts;
+	std::unique_ptr <CI2CPortExpander::I2CExpPorts[]> m_relayPorts;
 	bool m_RelayPower;
 	int m_RelayPowerPin;
 	CI2CPortExpander* m_portExpander = nullptr;

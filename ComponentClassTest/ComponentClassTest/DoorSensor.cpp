@@ -1,14 +1,14 @@
 #include "DoorSensor.h"
 
 
-CDoorSensor::CDoorSensor(I2CExpPorts sensorPort, CI2CPortExpander* portExpander)
+CDoorSensor::CDoorSensor(CI2CPortExpander::I2CExpPorts sensorPort, CI2CPortExpander* portExpander)
 {
 	m_sensorPort = sensorPort;
 
 	m_portExpander = portExpander;
 
 	// Set the port on the port expander to be input
-	portExpander->setIODIR(sensorPort, I2CExpIODirection::Input, true);
+	portExpander->setIODIR(sensorPort, CI2CPortExpander::I2CExpIODirection::Input, true);
 }
 
 

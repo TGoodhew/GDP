@@ -16,7 +16,7 @@ enum class DoorState
 class CGarageDoorSenorArray
 {
 public:
-	CGarageDoorSenorArray(I2CExpPorts doorOpenSensorPort, I2CExpPorts doorClosedSensorPort, CI2CPortExpander* portExpander);
+	CGarageDoorSenorArray(CI2CPortExpander::I2CExpPorts doorOpenSensorPort, CI2CPortExpander::I2CExpPorts doorClosedSensorPort, CI2CPortExpander* portExpander);
 	~CGarageDoorSenorArray();
 private:
 	std::unique_ptr<CDoorSensor> m_doorOpenSensor = nullptr;

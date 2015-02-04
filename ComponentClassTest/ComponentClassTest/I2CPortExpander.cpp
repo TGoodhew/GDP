@@ -118,7 +118,7 @@ byte CI2CPortExpander::readGPIO()
 	return readRegister(I2CExpRegisters::MCP23008_GPIO);
 }
 
-I2CExpGPIOValue CI2CPortExpander::readGPIOPort(I2CExpPorts readPort)
+CI2CPortExpander::I2CExpGPIOValue CI2CPortExpander::readGPIOPort(I2CExpPorts readPort)
 {
 	byte gpioValue = readGPIO();
 
@@ -164,9 +164,9 @@ byte CI2CPortExpander::readOLAT()
 	return readRegister(I2CExpRegisters::MCP23008_OLAT);
 }
 
-void CI2CPortExpander::writeOLAT(I2CExpPorts targetPort, I2CExpIODirection ioDir, bool updateFlag)
+void CI2CPortExpander::writeOLAT(I2CExpPorts targetPort, I2CExpOLATValue olatValue, bool updateFlag)
 {
-	setPortBit(targetPort, (I2CExpRegisterBit)ioDir, &m_olatSetting);
+	setPortBit(targetPort, (I2CExpRegisterBit)olatValue, &m_olatSetting);
 
 	if (updateFlag)
 		writeRegister(I2CExpRegisters::MCP23008_DEFVAL, m_olatSetting);

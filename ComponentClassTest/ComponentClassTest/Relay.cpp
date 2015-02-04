@@ -1,18 +1,18 @@
 #include "Relay.h"
 
 
-CRelay::CRelay(int numberChannels, I2CExpPorts relayPorts[], int powerPin, CI2CPortExpander* portExpander)
+CRelay::CRelay(int numberChannels, CI2CPortExpander::I2CExpPorts relayPorts[], int powerPin, CI2CPortExpander* portExpander)
 {
 	m_portExpander = portExpander;
 
-	m_relayPorts = std::make_unique<I2CExpPorts[]>(numberChannels);
+	m_relayPorts = std::make_unique<CI2CPortExpander::I2CExpPorts[]>(numberChannels);
 
 	for (int i = 0; i < numberChannels; i++)
 	{
 		m_relayPorts[i] = relayPorts[i];
 
 		// Configure the port expander to use the port as output
-		portExpander->setIODIR(relayPorts[i], I2CExpIODirection::Output, true);
+		portExpander->setIODIR(relayPorts[i], CI2CPortExpander::I2CExpIODirection::Output, true);
 	}
 
 	// Store the power control pin
@@ -44,11 +44,11 @@ void CRelay::turnRelayOff()
 // Causes the relay to open the specified contact
 void CRelay::openRelayChannel(int relayChannel)
 {
-	m_portExpander->writeGPIO(m_relayPorts[relayChannel], (I2CExpGPIOValue)RELAY_OPEN, true);
+	m_portExpander->writeGPIO(m_relayPorts[relayChannel], (CI2CPortExpander::I2CExpGPIOValue)RELAY_OPEN, true);
 }
 
 // Causes the relay to close the specified contact
 void CRelay::closeRelayChannel(int relayChannel)
 {
-	m_portExpander->writeGPIO(m_relayPorts[relayChannel], (I2CExpGPIOValue)RELAY_CLOSED, true);
+	m_portExpander->writeGPIO(m_relayPorts[relayChannel], (CI2CPortExpander::I2CExpGPIOValue)RELAY_CLOSED, true);
 }

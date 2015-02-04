@@ -1,7 +1,7 @@
 #include "GarageDoorSenorArray.h"
 
 
-CGarageDoorSenorArray::CGarageDoorSenorArray(I2CExpPorts doorOpenSensorPort, I2CExpPorts doorClosedSensorPort, CI2CPortExpander* portExpander)
+CGarageDoorSenorArray::CGarageDoorSenorArray(CI2CPortExpander::I2CExpPorts doorOpenSensorPort, CI2CPortExpander::I2CExpPorts doorClosedSensorPort, CI2CPortExpander* portExpander)
 {
 	m_doorOpenSensor = std::make_unique<CDoorSensor>(doorOpenSensorPort, portExpander);
 	m_doorClosedSensor = std::make_unique<CDoorSensor>(doorClosedSensorPort, portExpander);

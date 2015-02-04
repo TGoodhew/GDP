@@ -12,10 +12,10 @@ enum class DoorSensorState
 class CDoorSensor
 {
 public:
-	CDoorSensor(I2CExpPorts sensorPort, CI2CPortExpander* portExpander);
+	CDoorSensor(CI2CPortExpander::I2CExpPorts sensorPort, CI2CPortExpander* portExpander);
 	~CDoorSensor();
 private:
-	I2CExpPorts m_sensorPort;
+	CI2CPortExpander::I2CExpPorts m_sensorPort;
 	CI2CPortExpander* m_portExpander = nullptr;
 public:
 	// Returns the current sensor by reading the value on the associated sensor pin

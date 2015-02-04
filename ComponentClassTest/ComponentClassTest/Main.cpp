@@ -23,10 +23,10 @@ int _tmain(int argc, _TCHAR* argv[])
 
 void setup()
 {
-	I2CExpPorts relayPorts[2];
+	CI2CPortExpander::I2CExpPorts relayPorts[2];
 
-	relayPorts[0] = I2CExpPorts::PORT_GP6;
-	relayPorts[1] = I2CExpPorts::PORT_GP7;
+	relayPorts[0] = CI2CPortExpander::I2CExpPorts::PORT_GP6;
+	relayPorts[1] = CI2CPortExpander::I2CExpPorts::PORT_GP7;
 
 	mb1040 = new CUltrasonicSensor(3, 5);
 
@@ -39,7 +39,7 @@ void setup()
 
 	relay = new CRelay(2, relayPorts, 6, mcp23008);
 
-	doorSensorArray = new CGarageDoorSenorArray(I2CExpPorts::PORT_GP0, I2CExpPorts::PORT_GP1, mcp23008);
+	doorSensorArray = new CGarageDoorSenorArray(CI2CPortExpander::I2CExpPorts::PORT_GP0, CI2CPortExpander::I2CExpPorts::PORT_GP1, mcp23008);
 }
 
 // the loop routine runs over and over again forever:

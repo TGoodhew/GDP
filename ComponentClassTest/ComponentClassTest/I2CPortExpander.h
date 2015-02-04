@@ -6,135 +6,136 @@
 // Base address of device
 #define MCP23008_BASE_ADDRESS 0x20
 
-// Registers
-enum class I2CExpRegisters
-{
-	MCP23008_IODIR		=0x00,
-	MCP23008_IPOL		=0x01,
-	MCP23008_GPINTEN	=0x02,
-	MCP23008_DEFVAL		=0x03,
-	MCP23008_INTCON		=0x04,
-	MCP23008_IOCON		=0x05,
-	MCP23008_GPPU		=0x06,
-	MCP23008_INTF		=0x07,
-	MCP23008_INTCAP		=0x08,
-	MCP23008_GPIO		=0x09,
-	MCP23008_OLAT		=0x0A
-};
-
-// GPIO ports
-enum class I2CExpPorts
-{
-	PORT_GP0,
-	PORT_GP1,
-	PORT_GP2,
-	PORT_GP3,
-	PORT_GP4,
-	PORT_GP5,
-	PORT_GP6,
-	PORT_GP7
-};
-
-// GPIO Port Bits
-enum class I2CExpPortBits
-{
-	PORT_GP0_BIT = (1u << 0),
-	PORT_GP1_BIT = (1u << 1),
-	PORT_GP2_BIT = (1u << 2),
-	PORT_GP3_BIT = (1u << 3),
-	PORT_GP4_BIT = (1u << 4),
-	PORT_GP5_BIT = (1u << 5),
-	PORT_GP6_BIT = (1u << 6),
-	PORT_GP7_BIT = (1u << 7)
-};
-
-//IODIR direction
-enum class I2CExpIODirection
-{
-	Output = 0,
-	Input = 1
-};
-
-//IOPOL polarity
-enum class I2CExpIOPolarity
-{
-	Same = 0,
-	Opposite = 1
-};
-
-//GPINTEN enable interrupt
-enum class I2CExpGPINTEnable
-{
-	Disable = 0,
-	Enable = 1
-};
-
-//DEFVAL camparison value
-enum class I2CExpDEFVALComparison
-{
-	Low = 0,
-	High = 1
-};
-
-//INTCON comparison control
-enum class I2CExpINTCONControl
-{
-	Previous = 0,
-	DEFVALRegister = 1
-};
-
-//IOCON bit value
-enum class I2CExpIOCONValue
-{
-	Low = 0,
-	High = 1
-};
-
-//GPPU enable
-enum class I2CExpGPPUEnable
-{
-	Disabled = 0,
-	Enabled = 1
-};
-
-//INTF condition
-enum class I2CExpINTFCondition
-{
-	NoInterrupt = 0,
-	Interrupt = 1
-};
-
-//INTCAP value
-enum class I2CExpINTCAPValue
-{
-	Low = 0,
-	High = 1
-};
-
-//GPIO Value
-enum class I2CExpGPIOValue
-{
-	Low = 0,
-	High = 1
-};
-
-//OLAT Value
-enum class I2CExpOLATValue
-{
-	Low = 0,
-	High = 1
-};
-
-// Register bit
-enum class I2CExpRegisterBit
-{
-	low = 0,
-	High = 1
-};
-
 class CI2CPortExpander
 {
+public:
+	// GPIO ports
+	enum class I2CExpPorts
+	{
+		PORT_GP0,
+		PORT_GP1,
+		PORT_GP2,
+		PORT_GP3,
+		PORT_GP4,
+		PORT_GP5,
+		PORT_GP6,
+		PORT_GP7
+	};
+
+	//IODIR direction
+	enum class I2CExpIODirection
+	{
+		Output = 0,
+		Input = 1
+	};
+
+	//IOPOL polarity
+	enum class I2CExpIOPolarity
+	{
+		Same = 0,
+		Opposite = 1
+	};
+
+	//GPINTEN enable interrupt
+	enum class I2CExpGPINTEnable
+	{
+		Disable = 0,
+		Enable = 1
+	};
+
+	//DEFVAL camparison value
+	enum class I2CExpDEFVALComparison
+	{
+		Low = 0,
+		High = 1
+	};
+
+	//INTCON comparison control
+	enum class I2CExpINTCONControl
+	{
+		Previous = 0,
+		DEFVALRegister = 1
+	};
+
+	//IOCON bit value
+	enum class I2CExpIOCONValue
+	{
+		Low = 0,
+		High = 1
+	};
+
+	//GPPU enable
+	enum class I2CExpGPPUEnable
+	{
+		Disabled = 0,
+		Enabled = 1
+	};
+
+	//INTF condition
+	enum class I2CExpINTFCondition
+	{
+		NoInterrupt = 0,
+		Interrupt = 1
+	};
+
+	//INTCAP value
+	enum class I2CExpINTCAPValue
+	{
+		Low = 0,
+		High = 1
+	};
+
+	//GPIO Value
+	enum class I2CExpGPIOValue
+	{
+		Low = 0,
+		High = 1
+	};
+
+	//OLAT Value
+	enum class I2CExpOLATValue
+	{
+		Low = 0,
+		High = 1
+	};
+
+	// Register bit
+	enum class I2CExpRegisterBit
+	{
+		low = 0,
+		High = 1
+	};
+
 private:
+	// Registers
+	enum class I2CExpRegisters
+	{
+		MCP23008_IODIR = 0x00,
+		MCP23008_IPOL = 0x01,
+		MCP23008_GPINTEN = 0x02,
+		MCP23008_DEFVAL = 0x03,
+		MCP23008_INTCON = 0x04,
+		MCP23008_IOCON = 0x05,
+		MCP23008_GPPU = 0x06,
+		MCP23008_INTF = 0x07,
+		MCP23008_INTCAP = 0x08,
+		MCP23008_GPIO = 0x09,
+		MCP23008_OLAT = 0x0A
+	};
+
+	// GPIO Port Bits
+	enum class I2CExpPortBits
+	{
+		PORT_GP0_BIT = (1u << 0),
+		PORT_GP1_BIT = (1u << 1),
+		PORT_GP2_BIT = (1u << 2),
+		PORT_GP3_BIT = (1u << 3),
+		PORT_GP4_BIT = (1u << 4),
+		PORT_GP5_BIT = (1u << 5),
+		PORT_GP6_BIT = (1u << 6),
+		PORT_GP7_BIT = (1u << 7)
+	};
+
 	byte m_address = 0x20; // the address of the MCP23008 - According to datasheet it can range from 0x20 to 0x27
 	byte m_iodirSetting = 255; // set values for IODIR via |= PortBits::PORT_GP0_BIT or clear via &= ~PortBits::PORT_GP0_BIT
 	byte m_iopolSetting = 0; // set values for IOPOL via |= PortBits::PORT_GP0_BIT or clear via &= ~PortBits::PORT_GP0_BIT
@@ -180,6 +181,6 @@ public:
 	// read the value of the OLAT register
 	byte readOLAT();
 	// write to the OLAT register
-	void writeOLAT(I2CExpPorts targetPort, I2CExpIODirection ioDir, bool updateFlag);
+	void writeOLAT(I2CExpPorts targetPort, I2CExpOLATValue olatValue, bool updateFlag);
 };
 
