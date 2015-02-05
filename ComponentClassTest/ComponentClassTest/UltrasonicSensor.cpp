@@ -25,6 +25,9 @@ CUltrasonicSensor::CUltrasonicSensor(int powerPin, int controlPin)
 	pinMode(powerPin, OUTPUT);
 	pinMode(controlPin, OUTPUT);
 
+	// Put sensor into single ranging mode
+	digitalWrite(m_SensorControlPin, LOW);
+
 	// Start the serial access for the MB1040
 	Serial.begin(CBR_9600, Serial.SERIAL_8N1);
 

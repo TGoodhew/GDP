@@ -85,6 +85,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ButtonArray.h" />
     <ClInclude Include="DoorSensor.h" />
     <ClInclude Include="GarageDoorSenorArray.h" />
     <ClInclude Include="I2CPortExpander.h" />
@@ -95,6 +96,7 @@
     <ClInclude Include="UltrasonicSensor.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ButtonArray.cpp" />
     <ClCompile Include="DoorSensor.cpp" />
     <ClCompile Include="GarageDoorSenorArray.cpp" />
     <ClCompile Include="I2CPortExpander.cpp" />

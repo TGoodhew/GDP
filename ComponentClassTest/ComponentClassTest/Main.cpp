@@ -8,6 +8,7 @@
 #include "I2CPortExpander.h"
 #include "Relay.h"
 #include "DoorSensor.h"
+#include "ButtonArray.h"
 #include <ctime>
 
 CUltrasonicSensor* mb1040;
@@ -15,6 +16,8 @@ CI2CPortExpander* mcp23008;
 CRelay* relay;
 CDoorSensor* doorSensor;
 CGarageDoorSenorArray* doorSensorArray;
+CButtonArray* buttonArray;
+
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -24,6 +27,7 @@ int _tmain(int argc, _TCHAR* argv[])
 void setup()
 {
 	CI2CPortExpander::I2CExpPorts relayPorts[2];
+	CI2CPortExpander::I2CExpPorts buttonPorts[4];
 
 	relayPorts[0] = CI2CPortExpander::I2CExpPorts::PORT_GP6;
 	relayPorts[1] = CI2CPortExpander::I2CExpPorts::PORT_GP7;
@@ -40,23 +44,33 @@ void setup()
 	relay = new CRelay(2, relayPorts, 6, mcp23008);
 
 	doorSensorArray = new CGarageDoorSenorArray(CI2CPortExpander::I2CExpPorts::PORT_GP0, CI2CPortExpander::I2CExpPorts::PORT_GP1, mcp23008);
+
+	buttonPorts[0] = CI2CPortExpander::I2CExpPorts::PORT_GP2;
+	buttonPorts[1] = CI2CPortExpander::I2CExpPorts::PORT_GP3;
+	buttonPorts[2] = CI2CPortExpander::I2CExpPorts::PORT_GP4;
+	buttonPorts[3] = CI2CPortExpander::I2CExpPorts::PORT_GP5;
+
+	buttonArray = new CButtonArray(4, buttonPorts, mcp23008);
 }
 
 // the loop routine runs over and over again forever:
 void loop()
 {
-	std::time_t t = std::time(nullptr);
-	Log("Start Loop Time: %s\n", std::asctime(std::localtime(&t)));
-	Log("Main loop Distance: %d\n", mb1040->ReadSensor());
-	Log("Garage door sensor array state: %d\n", doorSensorArray->GetDoorState());
-	relay->openRelayChannel(0);
-	relay->closeRelayChannel(1);
-	delay(2000);
-	relay->closeRelayChannel(0);
-	relay->openRelayChannel(1);
-	Log("Main loop Distance: %d\n", mb1040->ReadSensor());
-	Log("Garage door sensor array state: %d\n", doorSensorArray->GetDoorState());
-	t = std::time(nullptr);
-	Log("End Loop Time: %s\n", std::asctime(std::localtime(&t)));
-	delay(2000);
+	//std::time_t t = std::time(nullptr);
+	//Log("Start Loop Time: %s\n", std::asctime(std::localtime(&t)));
+	//Log("Main loop Distance: %d\n", mb1040->ReadSensor());
+	//Log("Garage door sensor array state: %d\n", doorSensorArray->GetDoorState());
+	//relay->openRelayChannel(0);
+	//relay->closeRelayChannel(1);
+	//delay(2000);
+	//relay->closeRelayChannel(0);
+	//relay->openRelayChannel(1);
+	//Log("Main loop Distance: %d\n", mb1040->ReadSensor());
+	//Log("Garage door sensor array state: %d\n", doorSensorArray->GetDoorState());
+	//t = std::time(nullptr);
+	//Log("End Loop Time: %s\n", std::asctime(std::localtime(&t)));
+	//delay(2000);
+
+	Log("Button 0 value: %d\n", buttonArray->readButton(0));
+	delay(1000);
 }
