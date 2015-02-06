@@ -74,3 +74,7 @@ void loop()
 	Log("Button 0 value: %d\n", buttonArray->readButton(0));
 	delay(1000);
 }
+
+// TODO: Need to create an entry point for the m2tklib event source
+// extern "C" uint8_t m2_es_i2c(m2_p ep, uint8_t msg)
+

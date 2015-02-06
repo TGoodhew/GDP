@@ -197,3 +197,4 @@ byte CI2CPortExpander::readRegister(I2CExpRegisters targetRegister)
 	else
 		return 0; // TODO: Determine whether or not there needs to be a read error return for this function
 }
+
