@@ -97,6 +97,8 @@ void setup()
 // the loop routine runs over and over again forever:
 void loop()
 {
+	// TODO: Need to look into the amount of time one cycle takes - Seems to be a 2 second delay somewhere.
+
 	//std::time_t t = std::time(nullptr);
 	//Log("Start Loop Time: %s\n", std::asctime(std::localtime(&t)));
 	//Log("Main loop Distance: %d\n", mb1040->ReadSensor());
