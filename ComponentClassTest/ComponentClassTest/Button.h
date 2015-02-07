@@ -6,8 +6,8 @@ class CButton
 public:
 	enum class ButtonState
 	{
-		Closed,
-		Open
+		Open,
+		Closed
 	};
 
 	CButton(CI2CPortExpander::I2CExpPorts buttonPort, CI2CPortExpander* portExpander);

@@ -49,11 +49,17 @@ void draw(void) {
 
 int _tmain(int argc, _TCHAR* argv[])
 {
+	// BUG: Need to remove this for proper use
+
+
     return RunArduinoSketch();
 }
 
 void setup()
 {
+	str = (char *)malloc(512);
+	memset(str, 0, 512);
+
 	CI2CPortExpander::I2CExpPorts relayPorts[2];
 	CI2CPortExpander::I2CExpPorts buttonPorts[4];
 
@@ -123,6 +129,24 @@ void loop()
 // TODO: Need to create the m2tklib event source for the I2C port exapnder connected devices.
 extern "C" uint8_t m2_es_i2c(m2_p ep, uint8_t msg)
 {
+	uint8_t keyMessage = M2_KEY_NONE;
+
+	switch (msg)
+	{
+	case M2_ES_MSG_GET_KEY:
+		if (buttonArray->readButton(0) == CButton::ButtonState::Closed)
+			return M2_KEY_SELECT;
+		if (buttonArray->readButton(1) == CButton::ButtonState::Closed)
+			return M2_KEY_NEXT;
+		if (buttonArray->readButton(2) == CButton::ButtonState::Closed)
+			return M2_KEY_PREV;
+		if (buttonArray->readButton(3) == CButton::ButtonState::Closed)
+			return M2_KEY_EXIT;
+
+		return keyMessage;
+
+	}
+
 	return 0;
 }
 
