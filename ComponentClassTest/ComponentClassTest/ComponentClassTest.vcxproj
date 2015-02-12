@@ -75,6 +75,7 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalOptions>/d2nolock %(AdditionalOptions)</AdditionalOptions>
       <EnableEnhancedInstructionSet>NoExtensions</EnableEnhancedInstructionSet>
+      <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

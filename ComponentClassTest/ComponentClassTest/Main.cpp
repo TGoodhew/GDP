@@ -32,6 +32,9 @@ void fn_ok(m2_el_fnarg_p fnarg) {
 	sprintf(str, "Selected %d", number);
 }
 
+M2_LABEL(init_label, NULL, "Initializing...");
+
+// Basic test UI
 M2_LABELPTR(el_selected, NULL, (const char**)(&str));
 M2_LABEL(el_label, NULL, "Num: ");
 M2_U32NUM(el_num, "a1c4", &number);
@@ -41,7 +44,7 @@ M2_HLIST(el_hlist, NULL, list);
 M2_LIST(toplist) = { &el_selected, &el_hlist };
 M2_VLIST(top_el_vlist, NULL, toplist);
 
-M2tk m2(&top_el_vlist, m2_es_i2c, m2_eh_4bs, m2_gh_u8g_bfs);
+M2tk m2(&init_label, m2_es_i2c, m2_eh_4bs, m2_gh_u8g_bfs);
 
 void draw(void) {
 	m2.draw();
@@ -55,11 +58,8 @@ int _tmain(int argc, _TCHAR* argv[])
     return RunArduinoSketch();
 }
 
-void setup()
+void initializeHW()
 {
-	str = (char *)malloc(512);
-	memset(str, 0, 512);
-
 	CI2CPortExpander::I2CExpPorts relayPorts[2];
 	CI2CPortExpander::I2CExpPorts buttonPorts[4];
 
@@ -85,6 +85,28 @@ void setup()
 	buttonPorts[3] = CI2CPortExpander::I2CExpPorts::PORT_GP5;
 
 	buttonArray = new CButtonArray(4, buttonPorts, mcp23008);
+}
+
+void pictureLoop(bool checkKeys = true)
+{
+	if (checkKeys)
+		m2.checkKey();
+
+	if (m2.handleKey() != 0)
+	{
+		u8g.firstPage();
+		do {
+			if (checkKeys)
+				m2.checkKey();
+			draw();
+		} while (u8g.nextPage());
+	}
+}
+
+void setup()
+{
+	str = (char *)malloc(512);
+	memset(str, 0, 512);
 
 	/* connect u8glib with m2tklib */
 	m2_SetU8g(u8g.getU8g(), m2_u8g_box_icon);
@@ -92,6 +114,11 @@ void setup()
 	/* assign u8g font to index 0 */
 	m2.setFont(0, u8g_font_7x13);
 
+	pictureLoop(false);
+
+	initializeHW();
+
+	m2.setRoot(&top_el_vlist);
 }
 
 // the loop routine runs over and over again forever:
@@ -117,15 +144,7 @@ void loop()
 	//Log("Button 0 value: %d\n", buttonArray->readButton(0));
 	//delay(1000);
 
-	m2.checkKey();
-	if (m2.handleKey() != 0)
-	{
-		u8g.firstPage();
-		do {
-			m2.checkKey();
-			draw();
-		} while (u8g.nextPage());
-	}
+	pictureLoop();
 }
 
 // TODO: Need to create the m2tklib event source for the I2C port exapnder connected devices.
