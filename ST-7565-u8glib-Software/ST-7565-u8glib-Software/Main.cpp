@@ -13,7 +13,7 @@
 
 // Hardware SPI
 //	U8GLIB_LM6059(cs, a0[, reset])
-U8GLIB_LM6059 u8g(8, 10, 9);
+U8GLIB_LM6059 u8g(7, 6, 9);
 
 int _tmain(int argc, _TCHAR* argv[])
 {

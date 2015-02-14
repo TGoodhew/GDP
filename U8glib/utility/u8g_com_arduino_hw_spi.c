@@ -445,16 +445,16 @@ uint8_t u8g_com_arduino_hw_spi_fn(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void
 	switch (msg)
 	{
 	case U8G_COM_MSG_STOP:
-		//SPI.end();
 		break;
 
 	case U8G_COM_MSG_INIT:
-		//SPI.begin();
+		u8g_com_arduino_assign_pin_output_high(u8g);
+
 		u8g_com_arduino_digital_write(u8g, U8G_PI_CS, HIGH);
 		break;
 
 	case U8G_COM_MSG_ADDRESS:                     /* define cmd (arg_val = 0) or data mode (arg_val = 1) */
-		u8g_com_arduino_digital_write(u8g, U8G_PI_A0, arg_val); // TODO: Issue here is that when you use the SPI class it locks pins 11,12,13 for exclusive use. Need to rewire circuit.
+		u8g_com_arduino_digital_write(u8g, U8G_PI_A0, arg_val); 
 		break;
 
 	case U8G_COM_MSG_CHIP_SELECT:

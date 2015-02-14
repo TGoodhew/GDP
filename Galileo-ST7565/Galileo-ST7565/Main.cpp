@@ -41,7 +41,7 @@ int _tmain(int argc, _TCHAR* argv[])
 // pin 9 - LCD reset (RST)
 // pin 8 - LCD chip select (CS)
 
-ST7565 glcd(11, 13, 10, 9, 8);
+ST7565 glcd(11, 13, 6, 9, 7);
 
 #define LOGO16_GLCD_HEIGHT 16 
 #define LOGO16_GLCD_WIDTH  16 
@@ -53,6 +53,12 @@ const static unsigned char __attribute__((progmem)) logo16_glcd_bmp[] = {
 
 // The setup() method runs once, when the sketch starts
 void setup()   {
+
+	// BUG: For some reason my Saleae doesn't decode the SPI packets if I have the SPI enable pin selected in protocol analyzer and the value of it doeasn't change
+	// Introducing a pulse on CS to address.
+	digitalWrite(7, HIGH);
+	delay(50);
+	digitalWrite(7, LOW);
 
 	SPI.setClockDivider(SPI_CLOCK_DIV4);
 	SPI.begin();
