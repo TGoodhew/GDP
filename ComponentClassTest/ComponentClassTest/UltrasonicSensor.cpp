@@ -1,4 +1,5 @@
 #include "UltrasonicSensor.h"
+#include <chrono>
 
 // CUltrasonicSensor - This class wraps access to the MB1040 ultrasonic sensor
 //
@@ -57,7 +58,7 @@ void CUltrasonicSensor::TakeReading()
 {
 	StartRanging();
 
-	delayMicroseconds(20);
+	delayMicroseconds(200);
 
 	StopRanging();
 }
@@ -103,19 +104,16 @@ void CUltrasonicSensor::ResetSensor()
 // Reads the current sensor value
 int CUltrasonicSensor::ReadSensor()
 {
+	// TODO: Need to improve the perf of this routine - Currently takes around 1015ms to complete.
+
 	char serialData = 0;
 	char stringDistance[3];
 	int distance = 0;
-
-	Log("Reading Ultrasonic Sensor\n");
 
 	// Tell the sensor to take a reading
 	TakeReading();
 
 	memset(stringDistance, 0, sizeof(stringDistance));
-
-	// TODO: Need to work with the sensor to keep the reading current otherwise a single call to 
-	// this function will only read the first reading in the buffer
 
 	// Keep throwing away characters until we get to the start of a distance reading
 	while (Serial.peek() != 'R')
@@ -142,6 +140,7 @@ int CUltrasonicSensor::ReadSensor()
 	// Log the distance to the console
 	Log("Sensor distance read: %d\n", distance);
 	Log("Sensor data available: %d\n", Serial.available());
+
 	// Return the distance or zero if there was some problem reading
 	return distance;
 }

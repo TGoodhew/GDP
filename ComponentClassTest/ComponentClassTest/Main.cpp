@@ -25,7 +25,7 @@ CButtonArray* buttonArray;
 
 uint32_t number = 1234;
 char	*str;
-U8GLIB_LM6059 u8g(8, 10, 9);
+U8GLIB_LM6059 u8g(7, 6, 9);
 
 void fn_ok(m2_el_fnarg_p fnarg) {
 	/* do something with the number */
@@ -124,27 +124,23 @@ void setup()
 // the loop routine runs over and over again forever:
 void loop()
 {
-	// TODO: Need to look into the amount of time one cycle takes - Seems to be a 2 second delay somewhere.
+	Log("Main loop Distance: %d\n", mb1040->ReadSensor());
+	Log("Garage door sensor array state: %d\n", doorSensorArray->GetDoorState());
 
-	//std::time_t t = std::time(nullptr);
-	//Log("Start Loop Time: %s\n", std::asctime(std::localtime(&t)));
-	//Log("Main loop Distance: %d\n", mb1040->ReadSensor());
-	//Log("Garage door sensor array state: %d\n", doorSensorArray->GetDoorState());
-	//relay->openRelayChannel(0);
-	//relay->closeRelayChannel(1);
-	//delay(2000);
-	//relay->closeRelayChannel(0);
-	//relay->openRelayChannel(1);
-	//Log("Main loop Distance: %d\n", mb1040->ReadSensor());
-	//Log("Garage door sensor array state: %d\n", doorSensorArray->GetDoorState());
-	//t = std::time(nullptr);
-	//Log("End Loop Time: %s\n", std::asctime(std::localtime(&t)));
-	//delay(2000);
+	relay->openRelayChannel(0);
+	relay->closeRelayChannel(1);
+	delay(2000);
+	relay->closeRelayChannel(0);
+	relay->openRelayChannel(1);
+
+	Log("Main loop Distance: %d\n", mb1040->ReadSensor());
+	Log("Garage door sensor array state: %d\n", doorSensorArray->GetDoorState());
+	delay(2000);
 
 	//Log("Button 0 value: %d\n", buttonArray->readButton(0));
 	//delay(1000);
 
-	pictureLoop();
+	//pictureLoop();
 }
 
 // TODO: Need to create the m2tklib event source for the I2C port exapnder connected devices.
