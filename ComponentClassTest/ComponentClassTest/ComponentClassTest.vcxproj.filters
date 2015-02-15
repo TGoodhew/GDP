@@ -28,6 +28,12 @@
     <Filter Include="Source Files\m2tklib">
       <UniqueIdentifier>{6aab2ed9-12cc-4457-b5b4-a76349dc733c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\u8glib">
+      <UniqueIdentifier>{9940aded-adf9-4e05-bb0f-37481083c885}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\m2tklib">
+      <UniqueIdentifier>{dbb9fb33-aa20-4b62-af88-b4a7b25ce5ae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -56,6 +62,21 @@
     </ClInclude>
     <ClInclude Include="ButtonArray.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\u8glib\csrc\u8g.h">
+      <Filter>Header Files\u8glib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\u8glib\cppsrc\U8glib.h">
+      <Filter>Header Files\u8glib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\m2tklib\cpp\M2tk.h">
+      <Filter>Header Files\m2tklib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\m2tklib\src\m2.h">
+      <Filter>Header Files\m2tklib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\m2tklib\dev\u8glib\m2ghu8g.h">
+      <Filter>Header Files\m2tklib</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -86,206 +107,269 @@
     <ClCompile Include="ButtonArray.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\U8glib\utility\u8g_bitmap.c">
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\LiquidCrystal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\Print.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\Stepper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\Stream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\WString.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\eeprom.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\Servo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\HardwareSerial.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\NetworkSerial.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\PulseIn.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\DmapSupport.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\GalileoPins.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\GpioController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\I2cController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\PCA9685Support.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\PCAL9535ASupport.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\CY8C9540ASupport.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\Spi.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\SpiController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\WInterrupt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)\Source\arduino.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\u8glib\csrc\u8g_bitmap.c">
       <Filter>Source Files\u8glib</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\U8glib\utility\u8g_circle.c">
+    <ClCompile Include="..\..\..\u8glib\csrc\u8g_circle.c">
       <Filter>Source Files\u8glib</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\U8glib\utility\u8g_clip.c">
+    <ClCompile Include="..\..\..\u8glib\csrc\u8g_clip.c">
       <Filter>Source Files\u8glib</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\U8glib\utility\u8g_com_api.c">
+    <ClCompile Include="..\..\..\u8glib\csrc\u8g_com_api.c">
       <Filter>Source Files\u8glib</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\U8glib\utility\u8g_com_arduino_common.c">
+    <ClCompile Include="..\..\..\u8glib\csrc\u8g_com_arduino_common.c">
       <Filter>Source Files\u8glib</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\U8glib\utility\u8g_com_arduino_hw_spi.c">
+    <ClCompile Include="..\..\..\u8glib\csrc\u8g_com_arduino_hw_spi.c">
       <Filter>Source Files\u8glib</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\U8glib\utility\u8g_com_arduino_sw_spi.c">
+    <ClCompile Include="..\..\..\u8glib\csrc\u8g_com_arduino_sw_spi.c">
       <Filter>Source Files\u8glib</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\U8glib\utility\u8g_delay.c">
+    <ClCompile Include="..\..\..\u8glib\csrc\u8g_delay.c">
       <Filter>Source Files\u8glib</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\U8glib\utility\u8g_dev_st7565_lm6059.c">
+    <ClCompile Include="..\..\..\u8glib\csrc\u8g_dev_st7565_lm6059.c">
       <Filter>Source Files\u8glib</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\U8glib\utility\u8g_font.c">
+    <ClCompile Include="..\..\..\u8glib\csrc\u8g_font.c">
       <Filter>Source Files\u8glib</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\U8glib\utility\u8g_font_data.c">
+    <ClCompile Include="..\..\..\u8glib\csrc\u8g_ll_api.c">
       <Filter>Source Files\u8glib</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\U8glib\utility\u8g_pb.c">
+    <ClCompile Include="..\..\..\u8glib\csrc\u8g_page.c">
       <Filter>Source Files\u8glib</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\U8glib\utility\u8g_pb8v1.c">
+    <ClCompile Include="..\..\..\u8glib\csrc\u8g_pb.c">
       <Filter>Source Files\u8glib</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\U8glib\utility\u8g_pb16v1.c">
+    <ClCompile Include="..\..\..\u8glib\csrc\u8g_pb8v1.c">
       <Filter>Source Files\u8glib</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\U8glib\utility\u8g_rect.c">
+    <ClCompile Include="..\..\..\u8glib\csrc\u8g_pb16v1.c">
       <Filter>Source Files\u8glib</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\U8glib\utility\u8g_state.c">
+    <ClCompile Include="..\..\..\u8glib\csrc\u8g_rect.c">
       <Filter>Source Files\u8glib</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\U8glib\U8glib.cpp">
+    <ClCompile Include="..\..\..\u8glib\csrc\u8g_state.c">
       <Filter>Source Files\u8glib</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2align.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2dfs.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2draw.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2eh2bs.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2eh4bs.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2elbutton.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2elfnfmt.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2ellabel.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2ellabelptr.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2ellistbase.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2ellistcalc.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2ellisth.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2ellistv.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2elsb.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2elslbase.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2elstr.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2elstrptr.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2elsubutl.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2elu32.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2esarduino.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2fnarg.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2gfx.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2gfxutl.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2ghdummy.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2ghu8gbfs.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2ghu8gicon.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2ghu8gutl.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2key.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2navdatadn.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2navdataup.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2navfirst.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2navinit.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2navlast.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2navnext.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2navprev.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2navroot.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2navupdn.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2navutl.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2null.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2obj.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2opt.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2pin.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2rom.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2usrnext.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2usrprev.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\utility\m2usrupdn.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\M2tklib\M2tk.cpp">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\U8glib\utility\u8g_ll_api.c">
+    <ClCompile Include="..\..\..\u8glib\cppsrc\U8glib.cpp">
       <Filter>Source Files\u8glib</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\U8glib\utility\u8g_page.c">
+    <ClCompile Include="..\..\..\u8glib\sfntsrc\u8g_font_data.c">
       <Filter>Source Files\u8glib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2align.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2dfs.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2draw.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2eh2bs.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2eh4bs.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2elbutton.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2elfnfmt.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2ellabel.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2ellabelptr.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2ellistbase.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2ellistcalc.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2ellisth.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2ellistv.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2elsb.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2elslbase.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2elstr.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2elstrptr.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2elsubutl.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2elu32.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\dev\arduino\m2esarduino.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2fnarg.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2gfx.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2gfxutl.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2ghdummy.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2key.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2navdatadn.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2navdataup.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2navfirst.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2navinit.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2navlast.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2navnext.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2navprev.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2navroot.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2navupdn.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2navutl.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2null.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2obj.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2opt.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2pin.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2rom.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2usrnext.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2usrprev.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2usrupdn.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\cpp\M2tk.cpp">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\dev\u8glib\m2ghu8gbfs.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\dev\u8glib\m2ghu8gutl.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\dev\u8glib\m2ghu8gicon.c">
+      <Filter>Source Files\m2tklib</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

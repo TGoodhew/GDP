@@ -1,6 +1,13 @@
 // Main.cpp : Defines the entry point for the console application.
 //
 
+// includes - Add these directories to the project file include directories:
+// Repos\m2tklib\src
+// Repos\u8glib\cppsrc
+// Repos\u8glib\csrc
+// Repos\m2tklib\dev\u8glib
+// Repos\m2tklib\cpp
+//
 #include "stdafx.h"
 #include "arduino.h"
 #include "GarageDoorSenorArray.h"
@@ -10,9 +17,9 @@
 #include "DoorSensor.h"
 #include "ButtonArray.h"
 #include <ctime>
-#include "..\..\M2tklib\M2tk.h"
-#include "..\..\M2tklib\utility\m2ghu8g.h"
-#include "..\..\U8glib\U8glib.h"
+#include "M2tk.h"
+#include "m2ghu8g.h"
+#include "U8glib.h"
 
 extern "C" uint8_t m2_es_i2c(m2_p ep, uint8_t msg);
 
