@@ -2,11 +2,11 @@
 //
 
 // includes - Add these directories to the project file include directories:
-// Repos\m2tklib\src
 // Repos\u8glib\cppsrc
 // Repos\u8glib\csrc
-// Repos\m2tklib\dev\u8glib
 // Repos\m2tklib\cpp
+// Repos\m2tklib\src
+// Repos\m2tklib\dev\u8glib
 //
 #include "stdafx.h"
 #include "arduino.h"
@@ -131,26 +131,33 @@ void setup()
 // the loop routine runs over and over again forever:
 void loop()
 {
-	Log("Main loop Distance: %d\n", mb1040->ReadSensor());
-	Log("Garage door sensor array state: %d\n", doorSensorArray->GetDoorState());
+	//Log("Main loop Distance: %d\n", mb1040->ReadSensor());
+	//Log("Garage door sensor array state: %d\n", doorSensorArray->GetDoorState());
 
-	relay->openRelayChannel(0);
-	relay->closeRelayChannel(1);
-	delay(2000);
-	relay->closeRelayChannel(0);
-	relay->openRelayChannel(1);
+	//relay->openRelayChannel(0);
+	//relay->closeRelayChannel(1);
+	//delay(2000);
+	//relay->closeRelayChannel(0);
+	//relay->openRelayChannel(1);
 
-	Log("Main loop Distance: %d\n", mb1040->ReadSensor());
-	Log("Garage door sensor array state: %d\n", doorSensorArray->GetDoorState());
-	delay(2000);
+	//Log("Main loop Distance: %d\n", mb1040->ReadSensor());
+	//Log("Garage door sensor array state: %d\n", doorSensorArray->GetDoorState());
+	//delay(2000);
 
 	//Log("Button 0 value: %d\n", buttonArray->readButton(0));
 	//delay(1000);
 
-	//pictureLoop();
+	pictureLoop();
 }
 
-// TODO: Need to create the m2tklib event source for the I2C port exapnder connected devices.
+// m2tklib event source
+//
+// This is hooked up to the m2tklib main object and gets called when it does a checkKey() call.
+// In the case here there are 4 inputs connected to ports on the port expander. The m2tklib
+// event handler for this is m2eh4bs.c.
+//
+// Detail on the different event handlers is available here https://code.google.com/p/m2tklib/wiki/fnref#M2tk
+//
 extern "C" uint8_t m2_es_i2c(m2_p ep, uint8_t msg)
 {
 	uint8_t keyMessage = M2_KEY_NONE;
