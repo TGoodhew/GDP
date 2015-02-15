@@ -150,14 +150,15 @@ void loop()
 	pictureLoop();
 }
 
-// m2tklib event source
-//
-// This is hooked up to the m2tklib main object and gets called when it does a checkKey() call.
-// In the case here there are 4 inputs connected to ports on the port expander. The m2tklib
-// event handler for this is m2eh4bs.c.
-//
-// Detail on the different event handlers is available here https://code.google.com/p/m2tklib/wiki/fnref#M2tk
-//
+/*
+*	m2tklib event source
+*	
+*	This is hooked up to the m2tklib main object and gets called when it does a checkKey() call.
+*	In the case here there are 4 inputs connected to ports on the port expander. The m2tklib
+*	event handler for this is m2eh4bs.c.
+*	
+*	Detail on the different event handlers is available here https://code.google.com/p/m2tklib/wiki/fnref#M2tk
+*/
 extern "C" uint8_t m2_es_i2c(m2_p ep, uint8_t msg)
 {
 	uint8_t keyMessage = M2_KEY_NONE;
