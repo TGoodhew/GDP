@@ -14,4 +14,4 @@
 
 // TODO: reference additional headers your program requires here
 
-#include "..\..\U8glib\U8glib.h"
+#include "U8glib.h"
