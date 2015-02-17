@@ -1,6 +1,5 @@
 #include "Relay.h"
 
-
 CRelay::CRelay(int numberChannels, CI2CPortExpander::I2CExpPorts relayPorts[], int powerPin, CI2CPortExpander* portExpander)
 {
 	m_portExpander = portExpander;
@@ -29,6 +28,8 @@ CRelay::~CRelay()
 {
 }
 
+// TODO: Add a function to define if the channel is normally open or normally closed to support pulsing.
+
 // Turns the relay board on
 void CRelay::turnRelayOn()
 {
@@ -51,4 +52,15 @@ void CRelay::openRelayChannel(int relayChannel)
 void CRelay::closeRelayChannel(int relayChannel)
 {
 	m_portExpander->writeGPIO(m_relayPorts[relayChannel], (CI2CPortExpander::I2CExpGPIOValue)RELAY_CLOSED, true);
+}
+
+void CRelay::pulseRelayChannel(int relayChannel, int msPulse)
+{
+	// TODO: Handle the NC/NO state of the relay channel
+
+	openRelayChannel(relayChannel);
+
+	delay(msPulse);
+
+	closeRelayChannel(relayChannel);
 }

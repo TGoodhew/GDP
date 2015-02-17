@@ -28,5 +28,7 @@ public:
 	void openRelayChannel(int relayChannel);
 	// Causes the relay to close the specified contact
 	void closeRelayChannel(int relayChannel);
+	// Pulse the relay for the defined time
+	void pulseRelayChannel(int relayChannel, int msPulse);
 };
 

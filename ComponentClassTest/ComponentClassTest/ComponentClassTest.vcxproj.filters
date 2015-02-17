@@ -60,9 +60,6 @@
     <ClInclude Include="Button.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="ButtonArray.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\u8glib\csrc\u8g.h">
       <Filter>Header Files\u8glib</Filter>
     </ClInclude>
@@ -77,6 +74,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\m2tklib\dev\u8glib\m2ghu8g.h">
       <Filter>Header Files\m2tklib</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonArray.h">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
