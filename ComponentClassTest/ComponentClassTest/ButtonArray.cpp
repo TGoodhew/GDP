@@ -1,16 +1,12 @@
 #include "ButtonArray.h"
-#include <memory>
-
 
 CButtonArray::CButtonArray(int numberButtons, CI2CPortExpander::I2CExpPorts buttonPorts[], CI2CPortExpander* portExpander)
 {
 	m_portExpander = portExpander;
 
-	m_buttons = std::make_unique<CButton*[]>(numberButtons);
-
 	for (int i = 0; i < numberButtons; i++)
 	{
-		m_buttons[i] = new CButton(buttonPorts[i], portExpander);
+		m_buttons.push_back(std::make_unique<CButton>(buttonPorts[i], portExpander));
 	}
 }
 

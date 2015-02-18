@@ -4,11 +4,9 @@ CRelay::CRelay(int numberChannels, CI2CPortExpander::I2CExpPorts relayPorts[], i
 {
 	m_portExpander = portExpander;
 
-	m_relayPorts = std::make_unique<CI2CPortExpander::I2CExpPorts[]>(numberChannels);
-
 	for (int i = 0; i < numberChannels; i++)
 	{
-		m_relayPorts[i] = relayPorts[i];
+		m_relayPorts.push_back(std::make_unique<CI2CPortExpander::I2CExpPorts>(relayPorts[i]));
 
 		// Configure the port expander to use the port as output
 		portExpander->setIODIR(relayPorts[i], CI2CPortExpander::I2CExpIODirection::Output, true);
@@ -45,13 +43,13 @@ void CRelay::turnRelayOff()
 // Causes the relay to open the specified contact
 void CRelay::openRelayChannel(int relayChannel)
 {
-	m_portExpander->writeGPIO(m_relayPorts[relayChannel], (CI2CPortExpander::I2CExpGPIOValue)RELAY_OPEN, true);
+	m_portExpander->writeGPIO(*m_relayPorts[relayChannel], (CI2CPortExpander::I2CExpGPIOValue)RELAY_OPEN, true);
 }
 
 // Causes the relay to close the specified contact
 void CRelay::closeRelayChannel(int relayChannel)
 {
-	m_portExpander->writeGPIO(m_relayPorts[relayChannel], (CI2CPortExpander::I2CExpGPIOValue)RELAY_CLOSED, true);
+	m_portExpander->writeGPIO(*m_relayPorts[relayChannel], (CI2CPortExpander::I2CExpGPIOValue)RELAY_CLOSED, true);
 }
 
 void CRelay::pulseRelayChannel(int relayChannel, int msPulse)

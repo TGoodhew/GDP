@@ -3,12 +3,13 @@
 #include "I2CPortExpander.h"
 #include "Button.h"
 #include <memory>
+#include <vector>
 
 class CButtonArray
 {
 private:
 	CI2CPortExpander* m_portExpander = nullptr;
-	std::unique_ptr <CButton*[]> m_buttons = nullptr;
+	std::vector<std::unique_ptr<CButton>> m_buttons;
 
 public:
 	CButtonArray(int numberButtons, CI2CPortExpander::I2CExpPorts buttonPorts[], CI2CPortExpander* portExpander);

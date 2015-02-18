@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CI2CPortExpander">
+    <Position X="0.75" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="CI2CPortExpander::I2CExpGPPUEnable" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>I2CPortExpander.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="CI2CPortExpander::I2CExpPorts" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>I2CPortExpander.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="CI2CPortExpander::I2CExpGPIOValue" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>I2CPortExpander.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="CI2CPortExpander::I2CExpRegisterBit" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>I2CPortExpander.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="CI2CPortExpander::I2CExpGPINTEnable" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>I2CPortExpander.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="CI2CPortExpander::I2CExpIODirection" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>I2CPortExpander.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="CI2CPortExpander::I2CExpPortBits" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>I2CPortExpander.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="CI2CPortExpander::I2CExpINTCAPValue" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>I2CPortExpander.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="CI2CPortExpander::I2CExpINTCONControl" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>I2CPortExpander.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="CI2CPortExpander::I2CExpOLATValue" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>I2CPortExpander.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="CI2CPortExpander::I2CExpIOPolarity" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>I2CPortExpander.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="CI2CPortExpander::I2CExpDEFVALComparison" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>I2CPortExpander.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="CI2CPortExpander::I2CExpRegisters" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>I2CPortExpander.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="CI2CPortExpander::I2CExpINTFCondition" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>I2CPortExpander.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="CI2CPortExpander::I2CExpIOCONValue" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>I2CPortExpander.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>IAgEAIACAKQAAYAgAEIAIAAQAYAIBERCAEAACIAAQAI=</HashCode>
+      <FileName>I2CPortExpander.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CRelay">
+    <Position X="7.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAEAAAAAAUEACAAgAAAAAAACQAAAIAIAAA=</HashCode>
+      <FileName>Relay.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="m_portExpander" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CButton">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="CButton::ButtonState" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Button.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <AssociationLine Name="m_portExpander" Type="CI2CPortExpander" FixedToPoint="true">
+      <Path>
+        <Point X="3.75" Y="1.75" />
+        <Point X="2.25" Y="1.75" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAACAAAgAAEIAAAAAAAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Button.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="m_portExpander" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CDoorSensor">
+    <Position X="3.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAIABAEAA=</HashCode>
+      <FileName>DoorSensor.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="m_portExpander" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CGarageDoorSenorArray">
+    <Position X="5.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQIAAAAEAAAAgAAAAAAAAAAAg=</HashCode>
+      <FileName>GarageDoorSenorArray.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CUltrasonicSensor">
+    <Position X="9.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAiQBEAAAAAACAAIQAAAAAAEAABQAAQAAgAAAAEAEA=</HashCode>
+      <FileName>UltrasonicSensor.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CButtonArray">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAEAAAAAAAAAAAACAAAAAAAAAABAAACAAA=</HashCode>
+      <FileName>ButtonArray.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="m_portExpander" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

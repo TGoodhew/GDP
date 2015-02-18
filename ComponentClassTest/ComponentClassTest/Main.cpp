@@ -131,23 +131,23 @@ void setup()
 // the loop routine runs over and over again forever:
 void loop()
 {
-	//Log("Main loop Distance: %d\n", mb1040->ReadSensor());
-	//Log("Garage door sensor array state: %d\n", doorSensorArray->GetDoorState());
+	Log("Main loop Distance: %d\n", mb1040->ReadSensor());
+	Log("Garage door sensor array state: %d\n", doorSensorArray->GetDoorState());
 
-	//relay->openRelayChannel(0);
-	//relay->closeRelayChannel(1);
-	//delay(2000);
-	//relay->closeRelayChannel(0);
-	//relay->openRelayChannel(1);
+	relay->openRelayChannel(0);
+	relay->closeRelayChannel(1);
+	delay(2000);
+	relay->closeRelayChannel(0);
+	relay->openRelayChannel(1);
 
-	//Log("Main loop Distance: %d\n", mb1040->ReadSensor());
-	//Log("Garage door sensor array state: %d\n", doorSensorArray->GetDoorState());
-	//delay(2000);
+	Log("Main loop Distance: %d\n", mb1040->ReadSensor());
+	Log("Garage door sensor array state: %d\n", doorSensorArray->GetDoorState());
+	delay(2000);
 
 	//Log("Button 0 value: %d\n", buttonArray->readButton(0));
 	//delay(1000);
 
-	pictureLoop();
+	//pictureLoop();
 }
 
 /*

@@ -34,6 +34,9 @@
     <Filter Include="Header Files\m2tklib">
       <UniqueIdentifier>{dbb9fb33-aa20-4b62-af88-b4a7b25ce5ae}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Documentation">
+      <UniqueIdentifier>{44d96130-a700-4ec4-ad05-10e6f5ed5895}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -305,9 +308,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)\Source\arduino.cpp">
       <Filter>Source Files\Wiring</Filter>
     </ClCompile>
-    <ClCompile Include="ButtonArray.cpp">
-      <Filter>Source Files\Wiring</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)\Source\CY8C9540ASupport.cpp">
       <Filter>Source Files\Wiring</Filter>
     </ClCompile>
@@ -371,8 +371,14 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ButtonArray.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="ClassDiagram.cd">
+      <Filter>Documentation</Filter>
+    </None>
   </ItemGroup>
 </Project>
