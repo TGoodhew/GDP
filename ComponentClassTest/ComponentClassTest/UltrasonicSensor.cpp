@@ -1,5 +1,5 @@
+#include "stdafx.h"
 #include "UltrasonicSensor.h"
-#include <chrono>
 
 // CUltrasonicSensor - This class wraps access to the MB1040 ultrasonic sensor
 //

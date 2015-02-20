@@ -10,18 +10,9 @@
 //
 #include "stdafx.h"
 #include "arduino.h"
-#include "GarageDoorSenorArray.h"
-#include "UltrasonicSensor.h"
-#include "I2CPortExpander.h"
-#include "Relay.h"
-#include "DoorSensor.h"
-#include "ButtonArray.h"
 #include <ctime>
-#include "M2tk.h"
-#include "m2ghu8g.h"
-#include "U8glib.h"
-
-extern "C" uint8_t m2_es_i2c(m2_p ep, uint8_t msg);
+#include "CoreDevices.h"
+#include "UserInterface.h"
 
 CUltrasonicSensor* mb1040;
 CI2CPortExpander* mcp23008;
@@ -30,38 +21,9 @@ CDoorSensor* doorSensor;
 CGarageDoorSenorArray* doorSensorArray;
 CButtonArray* buttonArray;
 
-uint32_t number = 1234;
-char	*str;
-U8GLIB_LM6059 u8g(7, 6, 9);
-
-void fn_ok(m2_el_fnarg_p fnarg) {
-	/* do something with the number */
-	sprintf(str, "Selected %d", number);
-}
-
-M2_LABEL(init_label, NULL, "Initializing...");
-
-// Basic test UI
-M2_LABELPTR(el_selected, NULL, (const char**)(&str));
-M2_LABEL(el_label, NULL, "Num: ");
-M2_U32NUM(el_num, "a1c4", &number);
-M2_BUTTON(el_ok, "", " ok ", fn_ok);
-M2_LIST(list) = { &el_label, &el_num, &el_ok };
-M2_HLIST(el_hlist, NULL, list);
-M2_LIST(toplist) = { &el_selected, &el_hlist };
-M2_VLIST(top_el_vlist, NULL, toplist);
-
-M2tk m2(&init_label, m2_es_i2c, m2_eh_4bs, m2_gh_u8g_bfs);
-
-void draw(void) {
-	m2.draw();
-}
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	// BUG: Need to remove this for proper use
-
-
     return RunArduinoSketch();
 }
 
@@ -94,22 +56,6 @@ void initializeHW()
 	buttonArray = new CButtonArray(4, buttonPorts, mcp23008);
 }
 
-void pictureLoop(bool checkKeys = true)
-{
-	if (checkKeys)
-		m2.checkKey();
-
-	if (m2.handleKey() != 0)
-	{
-		u8g.firstPage();
-		do {
-			if (checkKeys)
-				m2.checkKey();
-			draw();
-		} while (u8g.nextPage());
-	}
-}
-
 void setup()
 {
 	str = (char *)malloc(512);
@@ -131,23 +77,23 @@ void setup()
 // the loop routine runs over and over again forever:
 void loop()
 {
-	Log("Main loop Distance: %d\n", mb1040->ReadSensor());
-	Log("Garage door sensor array state: %d\n", doorSensorArray->GetDoorState());
+	//Log("Main loop Distance: %d\n", mb1040->ReadSensor());
+	//Log("Garage door sensor array state: %d\n", doorSensorArray->GetDoorState());
 
-	relay->openRelayChannel(0);
-	relay->closeRelayChannel(1);
-	delay(2000);
-	relay->closeRelayChannel(0);
-	relay->openRelayChannel(1);
+	//relay->openRelayChannel(0);
+	//relay->closeRelayChannel(1);
+	//delay(2000);
+	//relay->closeRelayChannel(0);
+	//relay->openRelayChannel(1);
 
-	Log("Main loop Distance: %d\n", mb1040->ReadSensor());
-	Log("Garage door sensor array state: %d\n", doorSensorArray->GetDoorState());
-	delay(2000);
+	//Log("Main loop Distance: %d\n", mb1040->ReadSensor());
+	//Log("Garage door sensor array state: %d\n", doorSensorArray->GetDoorState());
+	//delay(2000);
 
 	//Log("Button 0 value: %d\n", buttonArray->readButton(0));
 	//delay(1000);
 
-	//pictureLoop();
+	pictureLoop();
 }
 
 /*

@@ -1,6 +1,4 @@
 #pragma once
-#include "stdafx.h"
-#include "arduino.h"
 #include "wire.h"
 
 // Base address of device

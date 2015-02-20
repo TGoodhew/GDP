@@ -81,6 +81,15 @@
     <ClInclude Include="ButtonArray.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
+    <ClInclude Include="UserInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreDevices.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bitmaps.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -373,6 +382,12 @@
     </ClCompile>
     <ClCompile Include="ButtonArray.cpp">
       <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="UserInterface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2elxbm.c">
+      <Filter>Source Files\m2tklib</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

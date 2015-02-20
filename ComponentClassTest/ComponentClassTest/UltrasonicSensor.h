@@ -1,6 +1,4 @@
 #pragma once
-#include "stdafx.h"
-#include "arduino.h"
 
 #define SENSOR_ON	LOW
 #define SENSOR_OFF	HIGH

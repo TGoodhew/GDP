@@ -93,7 +93,9 @@
     <ClInclude Include="..\..\..\m2tklib\src\m2.h" />
     <ClInclude Include="..\..\..\u8glib\cppsrc\U8glib.h" />
     <ClInclude Include="..\..\..\u8glib\csrc\u8g.h" />
+    <ClInclude Include="Bitmaps.h" />
     <ClInclude Include="ButtonArray.h" />
+    <ClInclude Include="CoreDevices.h" />
     <ClInclude Include="DoorSensor.h" />
     <ClInclude Include="GarageDoorSenorArray.h" />
     <ClInclude Include="I2CPortExpander.h" />
@@ -102,6 +104,7 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="UltrasonicSensor.h" />
+    <ClInclude Include="UserInterface.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\m2tklib\cpp\M2tk.cpp" />
@@ -129,6 +132,7 @@
     <ClCompile Include="..\..\..\m2tklib\src\m2elstrptr.c" />
     <ClCompile Include="..\..\..\m2tklib\src\m2elsubutl.c" />
     <ClCompile Include="..\..\..\m2tklib\src\m2elu32.c" />
+    <ClCompile Include="..\..\..\m2tklib\src\m2elxbm.c" />
     <ClCompile Include="..\..\..\m2tklib\src\m2fnarg.c" />
     <ClCompile Include="..\..\..\m2tklib\src\m2gfx.c" />
     <ClCompile Include="..\..\..\m2tklib\src\m2gfxutl.c" />
@@ -180,6 +184,7 @@
     <ClCompile Include="Relay.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="UltrasonicSensor.cpp" />
+    <ClCompile Include="UserInterface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

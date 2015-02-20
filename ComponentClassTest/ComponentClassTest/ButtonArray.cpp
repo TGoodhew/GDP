@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "ButtonArray.h"
 
 CButtonArray::CButtonArray(int numberButtons, CI2CPortExpander::I2CExpPorts buttonPorts[], CI2CPortExpander* portExpander)

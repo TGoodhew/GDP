@@ -1,6 +1,4 @@
 #pragma once
-#include "stdafx.h"
-#include "arduino.h"
 #include "DoorSensor.h"
 #include "I2CPortExpander.h"
 #include <memory>

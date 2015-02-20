@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "Relay.h"
 
 CRelay::CRelay(int numberChannels, CI2CPortExpander::I2CExpPorts relayPorts[], int powerPin, CI2CPortExpander* portExpander)
