@@ -389,6 +389,9 @@
     <ClCompile Include="..\..\..\m2tklib\src\m2elxbm.c">
       <Filter>Source Files\m2tklib</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2ellistxy.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

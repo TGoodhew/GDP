@@ -126,6 +126,7 @@
     <ClCompile Include="..\..\..\m2tklib\src\m2ellistcalc.c" />
     <ClCompile Include="..\..\..\m2tklib\src\m2ellisth.c" />
     <ClCompile Include="..\..\..\m2tklib\src\m2ellistv.c" />
+    <ClCompile Include="..\..\..\m2tklib\src\m2ellistxy.c" />
     <ClCompile Include="..\..\..\m2tklib\src\m2elsb.c" />
     <ClCompile Include="..\..\..\m2tklib\src\m2elslbase.c" />
     <ClCompile Include="..\..\..\m2tklib\src\m2elstr.c" />
