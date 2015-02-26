@@ -1,6 +1,9 @@
 #include "stdafx.h"
 #include "I2CPortExpander.h"
 
+// Port expander class for the I2C connected port expander IC
+// Actual device is an MCP 23008 http://www.digikey.com/product-search/en?lang=en&site=us&keywords=MCP23008-E%2FP-ND&x=0&y=0
+
 CI2CPortExpander::CI2CPortExpander()
 {
 	// Wire.begin must be called prior to creating an object of this class

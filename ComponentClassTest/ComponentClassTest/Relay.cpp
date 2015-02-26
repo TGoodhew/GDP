@@ -1,6 +1,9 @@
 #include "stdafx.h"
 #include "Relay.h"
 
+// Relay class for the I2C connected relay
+// Actual device is a SainSmart 2 channel relay module http://www.amazon.com/SainSmart-2-CH-2-Channel-Relay-Module/dp/B0057OC6D8
+
 CRelay::CRelay(int numberChannels, CI2CPortExpander::I2CExpPorts relayPorts[], int powerPin, CI2CPortExpander* portExpander)
 {
 	m_portExpander = portExpander;
