@@ -6,13 +6,37 @@ U8GLIB_LM6059 u8g(7, 6, 9);
 M2tk m2(&el_init_vlist, m2_es_i2c, m2_eh_4bs, m2_gh_u8g_bfs);
 
 // UI Variables
-uint32_t number = 1234;
 char	*str;
 int stateMachineState = 1;
 unsigned long next_distance_check = 0;
 unsigned long next_door_check = 0;
 bool refresh_screen = false;
 
+// Main UI rendering loop
+void pictureLoop(bool checkKeys)
+{
+	if (checkKeys)
+		m2.checkKey();
+
+	if ((m2.handleKey() != 0) || (refresh_screen))
+	{
+		refresh_screen = 0;
+		u8g.firstPage();
+		do 
+		{
+			if (checkKeys)
+				m2.checkKey();
+
+			m2.draw();
+
+		}
+		while (u8g.nextPage());
+	}
+
+	set_next_state();
+}
+
+// Button functions
 void fn_display_distance(m2_el_fnarg_p fnarg)
 {
 	stateMachineState = STATE_DISPLAY_DISTANCE;
@@ -38,30 +62,7 @@ void fn_door_state_ok(m2_el_fnarg_p fnarg)
 	stateMachineState = STATE_DISPLAY_MAIN_MENU;
 }
 
-void draw()
-{
-	m2.draw();
-}
-
-void pictureLoop(bool checkKeys)
-{
-	if (checkKeys)
-		m2.checkKey();
-
-	if ((m2.handleKey() != 0) || (refresh_screen))
-	{
-		refresh_screen = 0;
-		u8g.firstPage();
-		do {
-			if (checkKeys)
-				m2.checkKey();
-			draw();
-		} while (u8g.nextPage());
-	}
-
-	set_next_state();
-}
-
+// State machine implementation
 void set_next_state()
 {
 	// TODO: Will need to work on UI performance

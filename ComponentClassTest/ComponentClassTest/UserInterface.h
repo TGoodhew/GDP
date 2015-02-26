@@ -34,8 +34,7 @@ extern void set_next_state();
 Main UI definitions
 */
 
-// UI Screen Variables
-extern uint32_t number;
+// UI Variables
 extern char	*str;
 extern int stateMachineState;
 
