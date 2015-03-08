@@ -7,7 +7,6 @@
 class CButtonArray
 {
 private:
-	CI2CPortExpander* m_portExpander = nullptr;
 	std::vector<std::unique_ptr<CButton>> m_buttons;
 
 public:

@@ -37,6 +37,12 @@
     <Filter Include="Documentation">
       <UniqueIdentifier>{44d96130-a700-4ec4-ad05-10e6f5ed5895}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\UserInterface">
+      <UniqueIdentifier>{e729c8a9-2997-48f5-b48f-2d875e8ea23f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UserInterface">
+      <UniqueIdentifier>{b305b960-c1e4-430b-b7b2-2d4d2c34773c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -81,14 +87,14 @@
     <ClInclude Include="ButtonArray.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="UserInterface.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CoreDevices.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="UserInterface.h">
+      <Filter>Header Files\UserInterface</Filter>
     </ClInclude>
     <ClInclude Include="Bitmaps.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\UserInterface</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -383,14 +389,14 @@
     <ClCompile Include="ButtonArray.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
-    <ClCompile Include="UserInterface.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\m2tklib\src\m2elxbm.c">
       <Filter>Source Files\m2tklib</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\m2tklib\src\m2ellistxy.c">
       <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="UserInterface.cpp">
+      <Filter>Source Files\UserInterface</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

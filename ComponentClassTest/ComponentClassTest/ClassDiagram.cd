@@ -144,12 +144,9 @@
   <Class Name="CButtonArray">
     <Position X="5.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAEAAAAAAAEAAAAAAAAAAAACAAAAAAAAAABAAACAAA=</HashCode>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAACAAAAAAAAAABAAACAAA=</HashCode>
       <FileName>ButtonArray.h</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="m_portExpander" />
-    </ShowAsAssociation>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
