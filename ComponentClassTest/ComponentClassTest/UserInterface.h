@@ -9,14 +9,20 @@ extern U8GLIB_LM6059 u8g;
 extern M2tk m2;
 
 // UI Functions
+// Buttons
 extern void fn_display_distance(m2_el_fnarg_p fnarg);
 extern void fn_display_door_state(m2_el_fnarg_p fnarg);
 extern void fn_open_close_door(m2_el_fnarg_p fnarg);
 extern void fn_distance_ok(m2_el_fnarg_p fnarg); 
 extern void fn_door_state_ok(m2_el_fnarg_p fnarg);
-extern void draw();
+
+// M2tklib implementation functions
+// Event Source - interfaces the buttons to the UI elements by create KEY messages
 extern "C" uint8_t m2_es_i2c(m2_p ep, uint8_t msg);
+// Picture Loop - calls m2tklib library functions to draw the UI elements and checks for input
 extern void pictureLoop(bool checkKeys = true);
+
+// State machine implementation
 extern void set_next_state();
 
 // Define state machine
