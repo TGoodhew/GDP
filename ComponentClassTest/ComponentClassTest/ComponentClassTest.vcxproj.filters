@@ -320,6 +320,21 @@
     <ClCompile Include="..\..\..\m2tklib\dev\u8glib\m2ghu8gicon.c">
       <Filter>Source Files\m2tklib</Filter>
     </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonArray.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2elxbm.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\m2tklib\src\m2ellistxy.c">
+      <Filter>Source Files\m2tklib</Filter>
+    </ClCompile>
+    <ClCompile Include="UserInterface.cpp">
+      <Filter>Source Files\UserInterface</Filter>
+    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)\Source\arduino.cpp">
       <Filter>Source Files\Wiring</Filter>
     </ClCompile>
@@ -383,26 +398,11 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)\Source\WString.cpp">
       <Filter>Source Files\Wiring</Filter>
     </ClCompile>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ButtonArray.cpp">
-      <Filter>Source Files\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\m2tklib\src\m2elxbm.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\m2tklib\src\m2ellistxy.c">
-      <Filter>Source Files\m2tklib</Filter>
-    </ClCompile>
-    <ClCompile Include="UserInterface.cpp">
-      <Filter>Source Files\UserInterface</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
     <None Include="ClassDiagram.cd">
       <Filter>Documentation</Filter>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

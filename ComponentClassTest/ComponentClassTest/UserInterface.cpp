@@ -65,7 +65,6 @@ void fn_door_state_ok(m2_el_fnarg_p fnarg)
 // State machine implementation
 void set_next_state()
 {
-	// TODO: Will need to work on UI performance
 	switch (stateMachineState)
 	{
 	case STATE_DISPLAY_MAIN_MENU:
