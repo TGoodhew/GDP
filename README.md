@@ -1,5 +1,5 @@
 # GDP
-For videos on this project check out my YouTube playlist https://www.youtube.com/playlist?list=PL0KF6L1yWbaYS6SosYc4qXFaEhNVftG8t
+For videos on this project check out my <a href="https://www.youtube.com/playlist?list=PL0KF6L1yWbaYS6SosYc4qXFaEhNVftG8t">YouTube playlist </a>
 
 The code for my Garage Door Project.
 
